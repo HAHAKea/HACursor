@@ -14,7 +14,6 @@
 		1B03B6831B5C08B300BA7B13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B6821B5C08B300BA7B13 /* Images.xcassets */; };
 		1B03B6861B5C08B300BA7B13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B6841B5C08B300BA7B13 /* LaunchScreen.xib */; };
 		1B03B6921B5C08B300BA7B13 /* HACursorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6911B5C08B300BA7B13 /* HACursorTests.m */; };
-		1B03B6AB1B5C094700BA7B13 /* Delet_Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B69C1B5C094700BA7B13 /* Delet_Icon.png */; };
 		1B03B6AC1B5C094700BA7B13 /* HACursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B69E1B5C094700BA7B13 /* HACursor.m */; };
 		1B03B6AD1B5C094700BA7B13 /* HAItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A01B5C094700BA7B13 /* HAItemManager.m */; };
 		1B03B6AE1B5C094700BA7B13 /* HAScrollNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A21B5C094700BA7B13 /* HAScrollNavBar.m */; };
@@ -23,7 +22,7 @@
 		1B03B6B11B5C094700BA7B13 /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */; };
 		1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */; };
 		1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6B41B5C097200BA7B13 /* HATestView.m */; };
-		1B03B6B71B5C09EF00BA7B13 /* icon_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B6B61B5C09EF00BA7B13 /* icon_more@2x.png */; };
+		1B59F6E51B5CB94700E4A618 /* icon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B59F6E41B5CB94700E4A618 /* icon.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,7 +49,6 @@
 		1B03B68B1B5C08B300BA7B13 /* HACursorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACursorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B03B6901B5C08B300BA7B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B03B6911B5C08B300BA7B13 /* HACursorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HACursorTests.m; sourceTree = "<group>"; };
-		1B03B69C1B5C094700BA7B13 /* Delet_Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Delet_Icon.png; sourceTree = "<group>"; };
 		1B03B69D1B5C094700BA7B13 /* HACursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACursor.h; sourceTree = "<group>"; };
 		1B03B69E1B5C094700BA7B13 /* HACursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACursor.m; sourceTree = "<group>"; };
 		1B03B69F1B5C094700BA7B13 /* HAItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAItemManager.h; sourceTree = "<group>"; };
@@ -67,7 +65,7 @@
 		1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		1B03B6B31B5C097200BA7B13 /* HATestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATestView.h; sourceTree = "<group>"; };
 		1B03B6B41B5C097200BA7B13 /* HATestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATestView.m; sourceTree = "<group>"; };
-		1B03B6B61B5C09EF00BA7B13 /* icon_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_more@2x.png"; sourceTree = "<group>"; };
+		1B59F6E41B5CB94700E4A618 /* icon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icon.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,8 +151,7 @@
 		1B03B69B1B5C094700BA7B13 /* HACursor */ = {
 			isa = PBXGroup;
 			children = (
-				1B03B69C1B5C094700BA7B13 /* Delet_Icon.png */,
-				1B03B6B61B5C09EF00BA7B13 /* icon_more@2x.png */,
+				1B59F6E41B5CB94700E4A618 /* icon.bundle */,
 				1B03B69D1B5C094700BA7B13 /* HACursor.h */,
 				1B03B69E1B5C094700BA7B13 /* HACursor.m */,
 				1B03B69F1B5C094700BA7B13 /* HAItemManager.h */,
@@ -253,11 +250,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B59F6E51B5CB94700E4A618 /* icon.bundle in Resources */,
 				1B03B6811B5C08B300BA7B13 /* Main.storyboard in Resources */,
 				1B03B6861B5C08B300BA7B13 /* LaunchScreen.xib in Resources */,
 				1B03B6831B5C08B300BA7B13 /* Images.xcassets in Resources */,
-				1B03B6B71B5C09EF00BA7B13 /* icon_more@2x.png in Resources */,
-				1B03B6AB1B5C094700BA7B13 /* Delet_Icon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -480,6 +476,7 @@
 				1B03B6971B5C08B300BA7B13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1B03B6981B5C08B300BA7B13 /* Build configuration list for PBXNativeTarget "HACursorTests" */ = {
 			isa = XCConfigurationList;
@@ -488,6 +485,7 @@
 				1B03B69A1B5C08B300BA7B13 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
