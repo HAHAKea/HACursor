@@ -16,9 +16,10 @@
 
 #define navLineHeight 6
 #define StaticItemIndex 3
-#define SortItemViewY -300
+#define SortItemViewY -360
 #define SortItemViewMoveToY -70
 #define HAScrollItemIndex @"index"
+#define defBackgroundColor [UIColor blackColor]
 
 @interface HACursor()<UIScrollViewDelegate>
 @property (nonatomic, strong) UIView *navLine;
@@ -85,6 +86,7 @@
 - (HAScrollNavBar *)scrollNavBar{
     if (!_scrollNavBar) {
         _scrollNavBar = [[HAScrollNavBar alloc]init];
+        //_scrollNavBar.backgroundColor = [UIColor redColor];
         _scrollNavBar.delegate = self;
     }
     return _scrollNavBar;
@@ -93,7 +95,7 @@
 - (UIButton *)sortButton{
     if (!_sortButton) {
         _sortButton = [[UIButton alloc]init];
-        _sortButton.backgroundColor = self.scrollNavBar.backgroundColor;
+        //_sortButton.backgroundColor = self.scrollNavBar.backgroundColor;
         _sortButton.adjustsImageWhenDisabled = NO;
         [_sortButton setImage:[UIImage imageNamed:@"icon_more"] forState:UIControlStateNormal];
         [_sortButton addTarget:self action:@selector(sortButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -156,6 +158,12 @@
     [self setFrame:frameChanged];
 }
 
+- (void)setBackgroundColor:(UIColor *)backgroundColor{
+    [super setBackgroundColor:[UIColor clearColor]];
+    self.scrollNavBar.backgroundColor = backgroundColor;
+    self.sortButton.backgroundColor = backgroundColor;
+}
+
 - (void)setTitles:(NSArray *)titles{
     _titles = titles;
     self.sortItmView.titles = titles;
@@ -207,7 +215,10 @@
     [self addSubview:self.confirmButton];
     [self addSubview:self.tipsLabel];
     self.clipsToBounds = YES;
-    
+    self.userInteractionEnabled = YES;
+    if (!self.backgroundColor) {
+        self.backgroundColor = defBackgroundColor;
+    }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(setIndex:) name:HAScrollItemIndex object:nil];
 }
 
@@ -216,8 +227,6 @@
     self = [super init];
     if (self) {
         [self setup];
-        self.userInteractionEnabled = YES;
-        self.backgroundColor = [UIColor clearColor];
     }
     return self;
 }

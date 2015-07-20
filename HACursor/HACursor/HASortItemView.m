@@ -122,9 +122,7 @@
     }completion:^(BOOL finished) {
         
     }];
-    if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
-    }
+    
     item.hidden = YES;
     lastView.hidden = YES;
     [self.tmpTitles removeObjectAtIndex:index];
@@ -132,9 +130,15 @@
     [self.itemsDic removeObjectForKey:item.titleLabel.text];
     [[HAItemManager shareitemManager] setItemTitles:self.tmpTitles];
     [[NSNotificationCenter defaultCenter] postNotificationName:scrollNavBarUpdate object:item.titleLabel.text];
+    if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
+    }
 }
 
 - (void)longPress:(UILongPressGestureRecognizer *)longGesture{
+    if (self.isScareing) return;
     if (longGesture.state == UIGestureRecognizerStateBegan) {
         CGPoint location = [longGesture locationInView:longGesture.view];
         [self.itemsDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, HASortButton *button, BOOL *stop) {
@@ -144,6 +148,7 @@
                 [button itemShake];
                 self.selectButton = button;
                 self.oldItemFrame = self.selectButton.frame;
+                self.tmpRect = self.oldItemFrame;
                 [UIView animateWithDuration:0.3 animations:^{
                     self.selectButton.center = location;
                     self.selectButton.alpha = 0.8;
@@ -181,16 +186,12 @@
         [UIView animateWithDuration:0.3 animations:^{
             self.selectButton.frame = self.tmpRect;
             self.selectButton.alpha = 1;
-        }completion:^(BOOL finished) {
-           
         }];
         [self.selectButton itemStop];
         //排列完成后，将排列好的标题数组发给管理者
         [[HAItemManager shareitemManager] setItemTitles:self.tmpTitles];
         [[NSNotificationCenter defaultCenter]postNotificationName:rootScrollUpdateAfterSort object:nil];
-        if ([self.selectButton.titleLabel.text isEqualToString:self.selectButtonTitle]) {
-            [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
-        }
+       [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
     }
 }
 

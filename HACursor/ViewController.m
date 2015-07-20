@@ -39,13 +39,12 @@
     cursor.titles = self.titles;
     cursor.pageViews = self.pageViews;
     cursor.showSortbutton = YES;
+    cursor.backgroundColor = [UIColor yellowColor];
     //cursor.minFontSize = 10;
     //cursor.maxFontSize = 30;
     //cursor.isGraduallyChangFont = NO;
     //cursor.isGraduallyChangColor = NO;
     [self.view addSubview:cursor];
-    
-    NSLog(@"subViews --->%@   count --> %ld",scrollView.subviews, scrollView.subviews.count);
 }
 
 - (NSMutableArray *)addLabelWithScroll:(UIScrollView *)scrollView{

@@ -176,24 +176,22 @@
     self.isGraduallyChangFont = YES;
     self.userInteractionEnabled = YES;
     self.showsHorizontalScrollIndicator = NO;
-    self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
+    //self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
     [self initNotificationCenter];
 }
 
 - (void)moeToTop:(NSNotification *)notificion{
-    NSString *key = [[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:0];
-    if ([key isEqualToString:notificion.object]) {
+    if ([[[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:0] isEqualToString:notificion.object] || [[[[HAItemManager shareitemManager] getItemTitles] lastObject] isEqualToString:notificion.object]) {
         UIButton * button1 = [self.tmpItemsDic objectForKey:[[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:1]];
         [self buttonClick:button1];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             UIButton * button2 = [self.tmpItemsDic objectForKey:[[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:0]];
             [self buttonClick:button2];
         });
-    }else{
-        UIButton * button = [self.tmpItemsDic objectForKey:key];
+    }else {
+        UIButton * button = [self.tmpItemsDic objectForKey:[[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:[[HAItemManager shareitemManager] indexOfObject:notificion.object]]];
         [self buttonClick:button];
     }
-   
 }
 
 - (void)moeToSelectedItem:(NSNotification *)notificion{
@@ -213,7 +211,9 @@
         [self.pageViews replaceObjectAtIndex:i withObject:pageView];
         i++;
     }
+   
     [self layoutPageView];
+     [self refreshItemTag];
 }
 
 - (void)updateTitlesAfterSort{
