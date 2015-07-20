@@ -379,6 +379,11 @@
         }];
     }else{
         //隐藏排序菜单
+        if (self.sortItmView.isScareing) {
+            [self.sortItmView itemsStopScare];
+            self.confirmButton.selected = !self.confirmButton.selected;
+        }
+        
         self.scrollNavBar.isItemHiddenAfterDelet = NO;
         [self.scrollNavBar refreshItemTitles];
         [UIView animateWithDuration:0.2 animations:^{

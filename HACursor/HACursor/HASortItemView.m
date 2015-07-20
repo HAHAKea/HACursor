@@ -17,6 +17,8 @@
 #define RowNum 4
 #define scrollNavBarUpdate @"scrollNavBarUpdate"
 #define rootScrollUpdateAfterSort @"updateAfterSort"
+#define moveToSelectedItem @"moveToSelectedItem"
+#define moveToTop @"moveToTop"
 
 @interface HASortItemView()
 
@@ -120,6 +122,9 @@
     }completion:^(BOOL finished) {
         
     }];
+    if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
+    }
     item.hidden = YES;
     lastView.hidden = YES;
     [self.tmpTitles removeObjectAtIndex:index];
@@ -183,10 +188,14 @@
         //排列完成后，将排列好的标题数组发给管理者
         [[HAItemManager shareitemManager] setItemTitles:self.tmpTitles];
         [[NSNotificationCenter defaultCenter]postNotificationName:rootScrollUpdateAfterSort object:nil];
+        if ([self.selectButton.titleLabel.text isEqualToString:self.selectButtonTitle]) {
+            [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
+        }
     }
 }
 
 - (void)itemsScare{
+    self.isScareing = YES;
     for (int i = 0; i < self.items.count; i++) {
         HASortButton *item = self.items[i];
         [item itemShakeWithItem];
@@ -194,6 +203,7 @@
 }
 
 - (void)itemsStopScare{
+     self.isScareing = NO;
     for (int i = 0; i < self.items.count; i++) {
         HASortButton *item = self.items[i];
         [item itemStopWithItem];

@@ -12,6 +12,7 @@
 
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, copy) NSString *selectButtonTitle;
+@property (nonatomic, assign) BOOL isScareing;
 
 - (void)itemsScare;
 - (void)itemsStopScare;

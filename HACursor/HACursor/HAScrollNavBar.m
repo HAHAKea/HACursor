@@ -19,6 +19,8 @@
 #define scrollNavBarUpdate @"scrollNavBarUpdate"
 #define HAScrollItemIndex @"index"
 #define rootScrollUpdateAfterSort @"updateAfterSort"
+#define moveToSelectedItem @"moveToSelectedItem"
+#define moveToTop @"moveToTop"
 
 @interface HAScrollNavBar()<UIScrollViewDelegate>
 
@@ -154,15 +156,49 @@
     return self;
 }
 
+- (void)initNotificationCenter{
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTitles:) name:scrollNavBarUpdate object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateAfterSort) name:rootScrollUpdateAfterSort object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moeToSelectedItem:) name:moveToSelectedItem object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moeToTop:) name:moveToTop object:nil];
+}
+
+- (void)removeNotificationCenter{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:scrollNavBarUpdate object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:moveToTop object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:moveToSelectedItem object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:rootScrollUpdateAfterSort object:nil];
+    //[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 - (void)setup{
     self.isGraduallyChangColor = YES;
     self.isGraduallyChangFont = YES;
     self.userInteractionEnabled = YES;
     self.showsHorizontalScrollIndicator = NO;
     self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.9];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTitles:) name:scrollNavBarUpdate object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(updateAfterSort) name:rootScrollUpdateAfterSort object:nil];
+    [self initNotificationCenter];
+}
+
+- (void)moeToTop:(NSNotification *)notificion{
+    NSString *key = [[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:0];
+    if ([key isEqualToString:notificion.object]) {
+        UIButton * button1 = [self.tmpItemsDic objectForKey:[[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:1]];
+        [self buttonClick:button1];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            UIButton * button2 = [self.tmpItemsDic objectForKey:[[[HAItemManager shareitemManager] getItemTitles] objectAtIndex:0]];
+            [self buttonClick:button2];
+        });
+    }else{
+        UIButton * button = [self.tmpItemsDic objectForKey:key];
+        [self buttonClick:button];
+    }
+   
+}
+
+- (void)moeToSelectedItem:(NSNotification *)notificion{
+    UIButton * button = [self.tmpItemsDic objectForKey:notificion.object];
+    [self buttonClick:button];
 }
 
 - (void)updateAfterSort{
@@ -307,12 +343,7 @@
     }
     //占位按钮，主要作用是防止按钮的数组越界
     UIButton *placeholeButton = [[UIButton alloc]init];
-    //[placeholeButton setTitle:[UIColor yellowColor] forState:UIControlStateNormal];
-    [placeholeButton addTarget:self action:@selector(placeholderClick) forControlEvents:UIControlEventTouchUpInside];
     [self.itemsArray addObject:placeholeButton];
-}
-- (void)placeholderClick{
-    NSLog(@"placeholderClick");
 }
 
 - (void)refreshItemTitles{
@@ -436,4 +467,7 @@
     }
 }
 
+- (void)dealloc{
+    [self removeNotificationCenter];
+}
 @end
