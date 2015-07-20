@@ -19,11 +19,10 @@
 @property (nonatomic, strong) UIColor *titleSelectedColor;
 @property (nonatomic, strong) UIColor *navLineColor;
 
-@property (nonatomic, assign) NSInteger minFontSize;
-@property (nonatomic, assign) NSInteger maxFontSize;
-@property (nonatomic, assign) NSInteger defFontSize;
-@property (nonatomic, assign) BOOL showNarLine;
 @property (nonatomic, assign) BOOL showSortbutton;
 @property (nonatomic, assign) BOOL isGraduallyChangColor;
 @property (nonatomic, assign) BOOL isGraduallyChangFont;
+@property (nonatomic, assign) NSInteger minFontSize;
+@property (nonatomic, assign) NSInteger maxFontSize;
+@property (nonatomic, assign) NSInteger defFontSize;
 @end

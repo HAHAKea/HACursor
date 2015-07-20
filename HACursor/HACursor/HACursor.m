@@ -22,6 +22,7 @@
 #define defBackgroundColor [UIColor blackColor]
 
 @interface HACursor()<UIScrollViewDelegate>
+
 @property (nonatomic, strong) UIView *navLine;
 @property (nonatomic, strong) HAScrollNavBar *scrollNavBar;
 @property (nonatomic, strong) HASortItemView *sortItmView;
@@ -29,12 +30,12 @@
 @property (nonatomic, strong) UIButton *confirmButton;
 @property (nonatomic, strong) UILabel *tipsLabel;
 
-@property (nonatomic, assign) NSInteger oldBtnIndex;
+@property (nonatomic, assign) BOOL showNarLine;
 @property (nonatomic, assign) BOOL isDrag;
 @property (nonatomic, assign) BOOL isRefash;
 @property (nonatomic, assign) CGFloat oldOffset;
 @property (nonatomic, assign) CGFloat navBarH;
-
+@property (nonatomic, assign) NSInteger oldBtnIndex;
 @end
 
 @implementation HACursor
@@ -54,7 +55,7 @@
         _tipsLabel = [[UILabel alloc]init];
         _tipsLabel.text = @"栏目切换";
         _tipsLabel.textColor = [UIColor whiteColor];
-        _tipsLabel.font = [UIFont systemFontOfSize:20];
+        _tipsLabel.font = [UIFont systemFontOfSize:22];
         _tipsLabel.textAlignment = NSTextAlignmentCenter;
         _tipsLabel.hidden = YES;
     }
@@ -67,10 +68,10 @@
         _confirmButton.layer.cornerRadius = 5;
         _confirmButton.alpha = 0;
         _confirmButton.adjustsImageWhenDisabled = NO;
-        _confirmButton.layer.borderWidth = 2.0;
-        _confirmButton.layer.borderColor = [UIColor grayColor].CGColor;
-        _confirmButton.titleLabel.font = [UIFont systemFontOfSize:11];
-        _confirmButton.backgroundColor = [UIColor lightGrayColor];
+        _confirmButton.layer.borderWidth = 1.0;
+        _confirmButton.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        _confirmButton.titleLabel.font = [UIFont boldSystemFontOfSize:12];
+        _confirmButton.backgroundColor = [UIColor grayColor];
         [_confirmButton setTitle:@"排序删除" forState:UIControlStateNormal];
         [_confirmButton setTitle:@"完成" forState:UIControlStateSelected];
         [_confirmButton addTarget:self action:@selector(confirmButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -86,7 +87,7 @@
 - (HAScrollNavBar *)scrollNavBar{
     if (!_scrollNavBar) {
         _scrollNavBar = [[HAScrollNavBar alloc]init];
-        //_scrollNavBar.backgroundColor = [UIColor redColor];
+        _scrollNavBar.backgroundColor = [UIColor redColor];
         _scrollNavBar.delegate = self;
     }
     return _scrollNavBar;
@@ -95,7 +96,6 @@
 - (UIButton *)sortButton{
     if (!_sortButton) {
         _sortButton = [[UIButton alloc]init];
-        //_sortButton.backgroundColor = self.scrollNavBar.backgroundColor;
         _sortButton.adjustsImageWhenDisabled = NO;
         [_sortButton setImage:[UIImage imageNamed:@"icon_more"] forState:UIControlStateNormal];
         [_sortButton addTarget:self action:@selector(sortButtonClick) forControlEvents:UIControlEventTouchUpInside];
@@ -109,7 +109,7 @@
         _sortItmView = [[HASortItemView alloc]init];
         _sortItmView.hidden = YES;
         _sortItmView.userInteractionEnabled = YES;
-        _sortItmView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.5];
+        _sortItmView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
     }
     return _sortItmView;
 }
@@ -138,6 +138,7 @@
     _navLineColor = navLineColor;
     _navLine.layer.cornerRadius = 2;
     self.navLine.backgroundColor = navLineColor;
+
 }
 
 - (void)setRootScrollView:(UIScrollView *)rootScrollView{
@@ -165,6 +166,8 @@
 }
 
 - (void)setTitles:(NSArray *)titles{
+    BOOL isHaveSameTitle = [self checkisHaveSameItem:titles];
+    NSAssert(!isHaveSameTitle, @"错误！！！不可以包含相同的标题");
     _titles = titles;
     self.sortItmView.titles = titles;
     self.scrollNavBar.titles = (NSMutableArray *)titles;
@@ -267,7 +270,7 @@
         CGFloat confirmY = self.navBarH/ 2 - confirmH / 2 ;
         self.confirmButton.frame = CGRectMake(confirmX, confirmY, confirmW, confirmH);
         
-        CGFloat tipsW = 80;
+        CGFloat tipsW = 90;
         CGFloat tipsH = self.navBarH;
         CGFloat tipsX = - 2 * tipsW;
         CGFloat tipsY = 0;
@@ -419,6 +422,19 @@
         }];
     }
     self.sortButton.selected = !self.sortButton.isSelected;
+}
+
+- (BOOL)checkisHaveSameItem:(NSArray *)titles{
+    for (int i = 0; i < titles.count; i++) {
+        NSString *title1 = titles[i];
+        for (int j = 0; j < titles.count; j++) {
+            NSString *title2 = titles[j];
+            if (j != i && [title1 isEqualToString:title2]) {
+                return YES;
+            }
+        }
+    }
+    return NO;
 }
 
 #pragma -mark UIScrollViewDelegate

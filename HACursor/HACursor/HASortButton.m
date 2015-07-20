@@ -41,7 +41,10 @@
 
 - (void)setup{
     self.layer.cornerRadius = 5;
-    self.backgroundColor = [UIColor colorWithRed:0 green:1 blue:1 alpha:0.3];
+    self.layer.borderWidth = 1;
+    self.layer.borderColor = [UIColor colorWithRed:126/255.0 green:222/255.0 blue:184/255.0 alpha:0.6].CGColor;
+    self.titleLabel.font = [UIFont boldSystemFontOfSize:20];
+    self.backgroundColor = [UIColor colorWithRed:31/255.0 green:192/255.0 blue:120/255.0 alpha:0.6];
     [self addSubview:self.deletIcon];
 }
 

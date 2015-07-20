@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>8614DC03-F69B-4298-9872-1307AD24D5A8</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HACursor</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>23529B41B33A9620003219C7199539E2931C8447</key>
+		<string>https://github.com/HAHAKea/HACursor.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>HACursor.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>23529B41B33A9620003219C7199539E2931C8447</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/HAHAKea/HACursor.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>23529B41B33A9620003219C7199539E2931C8447</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>23529B41B33A9620003219C7199539E2931C8447</string>
+			<key>IDESourceControlWCCName</key>
+			<string>HACursor</string>
+		</dict>
+	</array>
+</dict>
+</plist>

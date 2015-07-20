@@ -14,7 +14,7 @@
 #define ItemW 50
 #define ItemH 30
 #define MarginH 25
-#define RowNum 4
+#define RowNum 5
 #define scrollNavBarUpdate @"scrollNavBarUpdate"
 #define rootScrollUpdateAfterSort @"updateAfterSort"
 #define moveToSelectedItem @"moveToSelectedItem"
@@ -82,7 +82,7 @@
     self.userInteractionEnabled = YES;
     for (int i = 0; i < self.titles.count; i++) {
         UIView *view = [[UIView alloc]init];
-        view.backgroundColor = [UIColor grayColor];
+        view.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
         view.layer.cornerRadius = 5;
         [self.positionViews addObject:view];
         [self addSubview:view];
@@ -153,7 +153,6 @@
                 self.tmpRect = self.oldItemFrame;
                 [UIView animateWithDuration:0.3 animations:^{
                     self.selectButton.center = location;
-                    self.selectButton.alpha = 0.8;
                 }];
             }
         }];
@@ -166,8 +165,8 @@
         //遍历按钮frame的数组
         [self.itemsDic enumerateKeysAndObjectsUsingBlock:^(NSString *key, HASortButton *button, BOOL *stop) {
             self.otherButton = button;
-            //CGRectIntersectsRect(self.selectButton.frame, self.otherButton.frame)
-            if (CGRectContainsPoint(self.otherButton.frame, self.selectButton.center) && self.selectButton != self.otherButton) {
+            //
+            if (CGRectIntersectsRect(self.selectButton.frame, self.otherButton.frame) && self.selectButton != self.otherButton) {
                 *stop = YES;
                 
                 self.tmpRect = self.otherButton.frame;
@@ -187,7 +186,6 @@
     }else if (longGesture.state == UIGestureRecognizerStateEnded){
         [UIView animateWithDuration:0.3 animations:^{
             self.selectButton.frame = self.tmpRect;
-            self.selectButton.alpha = 1;
         }];
         [self.selectButton itemStop];
         //排列完成后，将排列好的标题数组发给管理者

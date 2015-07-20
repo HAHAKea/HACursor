@@ -36,7 +36,7 @@
     cursor.rootScrollView = scrollView;
     cursor.titleNormalColor = [UIColor whiteColor];
     cursor.titleSelectedColor = [UIColor redColor];
-    cursor.titles = self.titles;
+    cursor.titles = self.titles; 
     cursor.pageViews = self.pageViews;
     cursor.showSortbutton = YES;
     //cursor.backgroundColor = [UIColor yellowColor];
