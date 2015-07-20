@@ -39,7 +39,7 @@
     cursor.titles = self.titles;
     cursor.pageViews = self.pageViews;
     cursor.showSortbutton = YES;
-    cursor.backgroundColor = [UIColor yellowColor];
+    //cursor.backgroundColor = [UIColor yellowColor];
     //cursor.minFontSize = 10;
     //cursor.maxFontSize = 30;
     //cursor.isGraduallyChangFont = NO;

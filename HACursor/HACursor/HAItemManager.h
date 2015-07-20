@@ -13,5 +13,5 @@
 
 - (void)setItemTitles:(NSMutableArray *)titles;
 - (NSMutableArray *)getItemTitles;
-
+- (void)printTitles;
 @end

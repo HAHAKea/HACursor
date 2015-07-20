@@ -122,17 +122,19 @@
     }completion:^(BOOL finished) {
         
     }];
-    
+    if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
+    }
     item.hidden = YES;
     lastView.hidden = YES;
     [self.tmpTitles removeObjectAtIndex:index];
     [self.positionViews removeLastObject];
     [self.itemsDic removeObjectForKey:item.titleLabel.text];
+    [[HAItemManager shareitemManager] printTitles];
     [[HAItemManager shareitemManager] setItemTitles:self.tmpTitles];
     [[NSNotificationCenter defaultCenter] postNotificationName:scrollNavBarUpdate object:item.titleLabel.text];
-    if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
-    }else{
+    [[HAItemManager shareitemManager] printTitles];
+    if (![item.titleLabel.text isEqualToString:self.selectButtonTitle]){
         [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
     }
 }
@@ -191,7 +193,7 @@
         //排列完成后，将排列好的标题数组发给管理者
         [[HAItemManager shareitemManager] setItemTitles:self.tmpTitles];
         [[NSNotificationCenter defaultCenter]postNotificationName:rootScrollUpdateAfterSort object:nil];
-       [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
+        [[NSNotificationCenter defaultCenter]postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
     }
 }
 

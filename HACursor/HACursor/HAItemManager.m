@@ -38,4 +38,10 @@
 - (NSMutableArray *)getItemTitles{
     return self.titles;
 }
+
+- (void)printTitles{
+    for (NSString *title in self.titles) {
+        NSLog(@"HAItemManager ---> %@",title);
+    }
+}
 @end
