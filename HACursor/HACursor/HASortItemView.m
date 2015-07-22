@@ -134,8 +134,9 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:scrollNavBarUpdate object:item.titleLabel.text];
     if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
          [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
-        NSLog(@"%@",item.titleLabel.text);
         [self setSelectButtonTitle:[self.itemKeys firstObject]];
+    }else{
+         [[NSNotificationCenter defaultCenter] postNotificationName:moveToSelectedItem object:self.selectButtonTitle];
     }
 }
 
