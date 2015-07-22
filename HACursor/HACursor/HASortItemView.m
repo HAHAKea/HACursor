@@ -104,6 +104,7 @@
 }
 
 - (void)layoutItemsAfterDeletItem:(HASortButton *)item{
+    if (self.itemKeys.count == 1) return;
     int index = (int)[self.tmpKeys indexOfObject:item.titleLabel.text];
     for (int i = index; i < self.tmpKeys.count-1; i++) {
         UIView *view = self.positionViews[i];
