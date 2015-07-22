@@ -13,7 +13,6 @@
 #import "HASortButton.h"
 #import "UIColor+RGBA.h"
 #import "HAItemManager.h"
-#import "UIScrollView+Extension.h"
 
 #define navLineHeight 6
 #define StaticItemIndex 3
@@ -401,7 +400,6 @@
         }
         
         self.scrollNavBar.isItemHiddenAfterDelet = NO;
-        //[self.scrollNavBar refreshItemTitles];
         [UIView animateWithDuration:0.2 animations:^{
             self.confirmButton.alpha = 0;
         }completion:^(BOOL finished) {

@@ -10,7 +10,6 @@
 #import "UIView+Extension.h"
 #import "UIColor+RGBA.h"
 #import "HAItemManager.h"
-#import "UIScrollView+Extension.h"
 
 #define ItemWidth 75
 #define FontMinSize 15

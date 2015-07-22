@@ -33,5 +33,4 @@
 
 - (void)hiddenAllItems;
 - (void)showAllItems;
-- (void)refreshItemTitles;
 @end

@@ -23,7 +23,6 @@
 		1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */; };
 		1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6B41B5C097200BA7B13 /* HATestView.m */; };
 		1B59F6E51B5CB94700E4A618 /* icon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B59F6E41B5CB94700E4A618 /* icon.bundle */; };
-		1B7041B11B5F4A2300142927 /* UIScrollView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7041B01B5F4A2300142927 /* UIScrollView+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +66,6 @@
 		1B03B6B31B5C097200BA7B13 /* HATestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATestView.h; sourceTree = "<group>"; };
 		1B03B6B41B5C097200BA7B13 /* HATestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATestView.m; sourceTree = "<group>"; };
 		1B59F6E41B5CB94700E4A618 /* icon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icon.bundle; sourceTree = "<group>"; };
-		1B7041AF1B5F4A2300142927 /* UIScrollView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+Extension.h"; sourceTree = "<group>"; };
-		1B7041B01B5F4A2300142927 /* UIScrollView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,8 +166,6 @@
 				1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */,
 				1B03B6A91B5C094700BA7B13 /* UIView+Extension.h */,
 				1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */,
-				1B7041AF1B5F4A2300142927 /* UIScrollView+Extension.h */,
-				1B7041B01B5F4A2300142927 /* UIScrollView+Extension.m */,
 			);
 			path = HACursor;
 			sourceTree = "<group>";
@@ -279,7 +274,6 @@
 				1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */,
 				1B03B6AC1B5C094700BA7B13 /* HACursor.m in Sources */,
 				1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */,
-				1B7041B11B5F4A2300142927 /* UIScrollView+Extension.m in Sources */,
 				1B03B6AE1B5C094700BA7B13 /* HAScrollNavBar.m in Sources */,
 				1B03B67E1B5C08B300BA7B13 /* ViewController.m in Sources */,
 				1B03B67B1B5C08B300BA7B13 /* AppDelegate.m in Sources */,
