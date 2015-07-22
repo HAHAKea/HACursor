@@ -22,7 +22,7 @@
 		1B03B6B11B5C094700BA7B13 /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */; };
 		1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */; };
 		1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6B41B5C097200BA7B13 /* HATestView.m */; };
-		1B59F6E51B5CB94700E4A618 /* icon.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B59F6E41B5CB94700E4A618 /* icon.bundle */; };
+		1B7041B91B5F822A00142927 /* icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B7041B81B5F822A00142927 /* icons.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,7 +65,7 @@
 		1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		1B03B6B31B5C097200BA7B13 /* HATestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATestView.h; sourceTree = "<group>"; };
 		1B03B6B41B5C097200BA7B13 /* HATestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATestView.m; sourceTree = "<group>"; };
-		1B59F6E41B5CB94700E4A618 /* icon.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icon.bundle; sourceTree = "<group>"; };
+		1B7041B81B5F822A00142927 /* icons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icons.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +151,7 @@
 		1B03B69B1B5C094700BA7B13 /* HACursor */ = {
 			isa = PBXGroup;
 			children = (
-				1B59F6E41B5CB94700E4A618 /* icon.bundle */,
+				1B7041B81B5F822A00142927 /* icons.bundle */,
 				1B03B69D1B5C094700BA7B13 /* HACursor.h */,
 				1B03B69E1B5C094700BA7B13 /* HACursor.m */,
 				1B03B69F1B5C094700BA7B13 /* HAItemManager.h */,
@@ -250,7 +250,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B59F6E51B5CB94700E4A618 /* icon.bundle in Resources */,
+				1B7041B91B5F822A00142927 /* icons.bundle in Resources */,
 				1B03B6811B5C08B300BA7B13 /* Main.storyboard in Resources */,
 				1B03B6861B5C08B300BA7B13 /* LaunchScreen.xib in Resources */,
 				1B03B6831B5C08B300BA7B13 /* Images.xcassets in Resources */,
