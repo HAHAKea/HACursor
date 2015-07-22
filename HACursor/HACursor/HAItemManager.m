@@ -8,6 +8,7 @@
 
 #import "HAItemManager.h"
 
+
 #define scrollNavBarUpdate @"scrollNavBarUpdate"
 #define rootScrollerUpdate @"rootScrollerUpdate"
 
@@ -32,14 +33,17 @@
 }
 
 - (void)setItemTitles:(NSMutableArray *)titles{
-    self.titles = titles;
+    _titles = titles;
+    self.scrollNavBar.itemKeys = titles;
+    self.sortItemView.itemKeys = titles;
 }
 
-- (NSMutableArray *)getItemTitles{
-    return self.titles;
+- (void)removeTitle:(NSString *)title{
+    [self.titles removeObject:title];
 }
 
 - (void)printTitles{
+    NSLog(@"********************************");
     for (NSString *title in self.titles) {
         NSLog(@"HAItemManager ---> %@",title);
     }

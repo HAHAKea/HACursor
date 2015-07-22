@@ -13,6 +13,7 @@
 #import "HASortButton.h"
 #import "UIColor+RGBA.h"
 #import "HAItemManager.h"
+#import "UIScrollView+Extension.h"
 
 #define navLineHeight 6
 #define StaticItemIndex 3
@@ -169,9 +170,12 @@
     BOOL isHaveSameTitle = [self checkisHaveSameItem:titles];
     NSAssert(!isHaveSameTitle, @"错误！！！不可以包含相同的标题");
     _titles = titles;
-    self.sortItmView.titles = titles;
-    self.scrollNavBar.titles = (NSMutableArray *)titles;
+
+#warning -----titles的赋值操作只对HAItemManager进行
+    [[HAItemManager shareitemManager] setScrollNavBar:self.scrollNavBar];
+    [[HAItemManager shareitemManager] setSortItemView:self.sortItmView];
     [[HAItemManager shareitemManager] setItemTitles:(NSMutableArray *)titles];
+    
 }
 
 - (void)setTitleNormalColor:(UIColor *)titleNormalColor{
@@ -320,7 +324,7 @@
 
 - (CGFloat)tranlateXWithButtonIndex:(NSInteger)index{
     CGFloat offset = 0.0;
-    NSInteger detal = self.scrollNavBar.titles.count - StaticItemIndex - 1;
+    NSInteger detal = self.scrollNavBar.itemKeys.count - StaticItemIndex - 1;
     if (self.titles.count * self.scrollNavBar.itemW > self.scrollNavBar.width) {
         CGFloat detalX = 0;
         if (index < StaticItemIndex) {
@@ -397,7 +401,7 @@
         }
         
         self.scrollNavBar.isItemHiddenAfterDelet = NO;
-        [self.scrollNavBar refreshItemTitles];
+        //[self.scrollNavBar refreshItemTitles];
         [UIView animateWithDuration:0.2 animations:^{
             self.confirmButton.alpha = 0;
         }completion:^(BOOL finished) {

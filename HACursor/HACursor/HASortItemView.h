@@ -10,8 +10,8 @@
 @class HASortButton;
 @interface HASortItemView : UIView
 
-@property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, copy) NSString *selectButtonTitle;
+@property (nonatomic, strong) NSMutableArray *itemKeys;
 @property (nonatomic, assign) BOOL isScareing;
 
 - (void)itemsScare;

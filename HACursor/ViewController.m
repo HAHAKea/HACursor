@@ -27,17 +27,17 @@
     scrollView.frame = CGRectMake(0, 0, self.view.width, 610);
     scrollView.contentSize = CGSizeMake(self.view.width * self.titles.count, 0);
     scrollView.pagingEnabled = YES;
-    scrollView.bounces = NO;
+    //scrollView.bounces = NO;
     [self.view addSubview:scrollView];
     self.pageViews =  [self addLabelWithScroll:scrollView];
     
     HACursor *cursor = [[HACursor alloc]init];
     cursor.frame = CGRectMake(0, 20, self.view.width, 45);
-    cursor.rootScrollView = scrollView;
     cursor.titleNormalColor = [UIColor whiteColor];
     cursor.titleSelectedColor = [UIColor redColor];
     cursor.titles = self.titles; 
     cursor.pageViews = self.pageViews;
+    cursor.rootScrollView = scrollView;
     cursor.showSortbutton = YES;
     //cursor.backgroundColor = [UIColor yellowColor];
     //cursor.minFontSize = 10;
