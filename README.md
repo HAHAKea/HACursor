@@ -1,6 +1,7 @@
 # HACursor
 
 ## Introduction:
+**HACursor**，是一个对横向ScrollView中的视图进行管理的UI控件。只要几行代码就可以集成类似于网易新闻对主题页面进行排序，删除操作的功能。
 ## Presentation:
 ## Usage:
 #### 代码例子:其中（必选）为必须设置的属性，其余可根据需要来设置
