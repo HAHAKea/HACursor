@@ -1,17 +1,11 @@
 # HACursor
-帮助开发者方便集成导航指示器，用于管理视图页面
 
-##Introduction:
-
-**HACursor**，是一个对横向ScrollView中的视图进行管理的UI控件。只要几行代码就可以集成类似于网易新闻对主题页面进行排序，删除操作的功能。
-
-##Usage:
-首先**import "HACursor.h"**
-
-
+## Introduction:
+## Presentation:
+## Usage:
 #### 代码例子:其中（必选）为必须设置的属性，其余可根据需要来设置
 
-	HACursor *cursor = [[HACursor alloc]init];
+    HACursor *cursor = [[HACursor alloc]init];
     cursor.frame = CGRectMake(0, 20, self.view.width, 45);
     
     //需要管理的scrollView （必选！！）
@@ -38,8 +32,6 @@
     //设置是否需要渐变字体的颜色
     cursor.isGraduallyChangColor = NO;
     [self.view addSubview:cursor];
-   
-   
-##Requirement:
+## Requirement:
 * iOS7.0以上
 * Xcode 6
