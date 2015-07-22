@@ -11,6 +11,7 @@
 
 #define angle2Radian(angle) ((angle) / 180.0 * M_PI)
 #define deletItemW 15
+#define iconName(file) [@"icons.bundle" stringByAppendingPathComponent:file]
 
 @interface HASortButton()
 
@@ -23,7 +24,7 @@
 - (UIImageView *)deletIcon{
     if (!_deletIcon) {
         _deletIcon = [[UIImageView alloc]init];
-        _deletIcon.image = [UIImage imageNamed:@"Delet_Icon"];
+        _deletIcon.image = [UIImage imageNamed:iconName(@"icon_delet.png")];
         _deletIcon.layer.cornerRadius = deletItemW / 2;
         _deletIcon.alpha = 0;
     }

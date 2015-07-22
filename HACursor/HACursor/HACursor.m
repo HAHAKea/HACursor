@@ -20,6 +20,7 @@
 #define SortItemViewMoveToY -70
 #define HAScrollItemIndex @"index"
 #define defBackgroundColor [UIColor blackColor]
+#define iconName(file) [@"icons.bundle" stringByAppendingPathComponent:file]
 
 @interface HACursor()<UIScrollViewDelegate>
 
@@ -97,7 +98,7 @@
     if (!_sortButton) {
         _sortButton = [[UIButton alloc]init];
         _sortButton.adjustsImageWhenDisabled = NO;
-        [_sortButton setImage:[UIImage imageNamed:@"icon_more"] forState:UIControlStateNormal];
+        [_sortButton setImage:[UIImage imageNamed:iconName(@"icon_more.png")] forState:UIControlStateNormal];
         [_sortButton addTarget:self action:@selector(sortButtonClick) forControlEvents:UIControlEventTouchUpInside];
         _sortButton.hidden = YES;
     }
