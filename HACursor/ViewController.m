@@ -24,10 +24,10 @@
     self.titles = @[@"网易",@"新浪",@"腾讯",@"苹果",@"搜狐",@"淘宝",@"京东",@"百度",@"有道",@"小米",@"华为",@"三星"];
     
     HACursor *cursor = [[HACursor alloc]init];
-    cursor.frame = CGRectMake(0, 20, self.view.width, 45);
+    cursor.frame = CGRectMake(0, 64, self.view.width, 45);
     cursor.titles = self.titles;
     cursor.pageViews = [self createPageViews];
-    cursor.rootScrollViewHeight = self.view.frame.size.height - 65;
+    cursor.rootScrollViewHeight = self.view.frame.size.height - 109;
     cursor.titleNormalColor = [UIColor whiteColor];
     cursor.titleSelectedColor = [UIColor redColor];
     cursor.showSortbutton = YES;
