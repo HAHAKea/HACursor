@@ -90,6 +90,7 @@
         _rootScrollView = [[HARootScrollView alloc]init];
         _rootScrollView.pagingEnabled = YES;
         _rootScrollView.backgroundColor = [UIColor cyanColor];
+        _rootScrollView.margin = 20;
     }
     return _rootScrollView;
 }

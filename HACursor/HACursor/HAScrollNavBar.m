@@ -214,8 +214,8 @@
 }
 
 - (void)moveToTopAfterDelet:(NSNotification *)notificion{
-    UIButton * button1 = [self getItemWithIndex:1];
-    [self buttonClick:button1];
+//    UIButton * button1 = [self getItemWithIndex:1];
+//    [self buttonClick:button1];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         UIButton * button2 = [self getItemWithIndex:0];
         [self buttonClick:button2];
@@ -319,8 +319,8 @@
 }
 
 - (void)changeButtonFontWithOffset:(CGFloat)offset andWidth:(CGFloat)width{
-    //self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
-    //self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+//    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+//    self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
     
     [self.firstButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
     [self.secButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
