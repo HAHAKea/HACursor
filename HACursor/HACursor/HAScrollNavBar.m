@@ -11,6 +11,7 @@
 #import "UIColor+RGBA.h"
 #import "HAItemManager.h"
 
+
 #define ItemWidth 75
 #define FontMinSize 15
 #define FontDetLeSize 10
@@ -35,7 +36,6 @@
 
 @property (nonatomic, assign) CGPoint beginPoint;
 @property (nonatomic, assign) CGFloat lastXpoint;
-@property (nonatomic, assign) NSInteger currctIndex;
 @property (nonatomic, assign) CGFloat red1;
 @property (nonatomic, assign) CGFloat green1;
 @property (nonatomic, assign) CGFloat blue1;
@@ -44,6 +44,7 @@
 @property (nonatomic, assign) CGFloat green2;
 @property (nonatomic, assign) CGFloat blue2;
 @property (nonatomic, assign) CGFloat alpha2;
+@property (nonatomic, assign) NSInteger currctIndex;
 @end
 
 @implementation HAScrollNavBar
@@ -83,6 +84,10 @@
     return button;
 }
 
+- (void)setPageViews:(NSMutableArray *)pageViews{
+    _pageViews = pageViews;
+}
+
 - (NSMutableDictionary *)itemsDic{
     if (!_itemsDic) {
         _itemsDic = [NSMutableDictionary dictionary];
@@ -99,7 +104,6 @@
 - (NSMutableDictionary *)tmpPageViewDic{
     if (!_tmpPageViewDic) {
         _tmpPageViewDic = [NSMutableDictionary dictionary];
-        
     }
     return _tmpPageViewDic;
 }
@@ -108,12 +112,10 @@
     _offsetX = self.contentOffset.x;
 }
 
-- (void)setRootScrollView:(UIScrollView *)rootScrollView{
+- (void)setRootScrollView:(HARootScrollView *)rootScrollView{
     _rootScrollView = rootScrollView;
-    rootScrollView.delegate = self;
-    
-    self.x = rootScrollView.x;
-    self.y = rootScrollView.y - self.height;
+    _rootScrollView.delegate = self;
+    _rootScrollView.pageViews = self.pageViews;
 }
 
 - (void)setTitleNormalColor:(UIColor *)titleNormalColor{
@@ -229,21 +231,19 @@
     if (notifition.object) {
         UIView *deletPageView = [self.tmpPageViewDic objectForKey:notifition.object];
         deletPageView.hidden = YES;
-        //[self.pageViewDic removeObjectForKey:notifition.object];
+        [self.tmpPageViewDic removeObjectForKey:notifition.object];
     }
     int i = 0;
+    NSMutableArray *tmpArray = [NSMutableArray array];
     self.rootScrollView.contentSize = CGSizeMake(self.tmpKeys.count * self.rootScrollView.width, 0);
     for (NSString *key in self.tmpKeys) {
         NSLog(@"key ---> %@  count ---> %ld",key,self.tmpKeys.count);
         UIView *pageView = [self.tmpPageViewDic objectForKey:key];
-        CGFloat x = i * self.rootScrollView.width;
-        CGFloat y = 0;
-        CGFloat w = self.rootScrollView.width;
-        CGFloat h = self.rootScrollView.height;
-        pageView.frame = CGRectMake(x, y, w, h);
-        //NSLog(@"%@",pageView);
+        [tmpArray addObject:pageView];
         i++;
     }
+    self.rootScrollView.pageViews = tmpArray;
+    [self.rootScrollView reloadPageViews];
 }
 
 - (void)updateTitles:(NSNotification *)notifition{
@@ -370,6 +370,7 @@
 - (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
     NSInteger num = targetContentOffset->x / _rootScrollView.frame.size.width;
     [self setSelectItemWithIndex:num];
+    NSLog(@"num ---> %ld",num);
 //    [[NSNotificationCenter defaultCenter] postNotificationName:HAScrollItemIndex object:[NSNumber numberWithInteger:num]];
 }
 

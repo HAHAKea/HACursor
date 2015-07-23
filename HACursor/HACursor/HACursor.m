@@ -13,6 +13,7 @@
 #import "HASortButton.h"
 #import "UIColor+RGBA.h"
 #import "HAItemManager.h"
+#import "HARootScrollView.h"
 
 #define navLineHeight 6
 #define StaticItemIndex 3
@@ -23,6 +24,10 @@
 #define iconName(file) [@"icons.bundle" stringByAppendingPathComponent:file]
 
 @interface HACursor()<UIScrollViewDelegate>
+
+#warning 使用带缓存机制的scrollView
+//@property (nonatomic, weak) UIScrollView *rootScrollView;
+@property (nonatomic, strong) HARootScrollView *rootScrollView;
 
 @property (nonatomic, strong) UIView *navLine;
 @property (nonatomic, strong) HAScrollNavBar *scrollNavBar;
@@ -80,10 +85,22 @@
     return _confirmButton;
 }
 
+- (HARootScrollView *)rootScrollView{
+    if (!_rootScrollView) {
+        _rootScrollView = [[HARootScrollView alloc]init];
+        _rootScrollView.pagingEnabled = YES;
+        _rootScrollView.backgroundColor = [UIColor cyanColor];
+    }
+    return _rootScrollView;
+}
+
 - (void)setPageViews:(NSMutableArray *)pageViews{
     _pageViews = pageViews;
+    
     self.scrollNavBar.pageViews = pageViews;
+    _scrollNavBar.rootScrollView = self.rootScrollView;
 }
+
 
 - (HAScrollNavBar *)scrollNavBar{
     if (!_scrollNavBar) {
@@ -139,9 +156,24 @@
     _navLineColor = navLineColor;
     _navLine.layer.cornerRadius = 2;
     self.navLine.backgroundColor = navLineColor;
-
 }
 
+- (void)setRootScrollViewHeight:(CGFloat)rootScrollViewHeight{
+    _rootScrollViewHeight = rootScrollViewHeight;
+    CGRect rect = self.frame;
+    CGFloat x = rect.origin.x;
+    CGFloat y = rect.origin.y;
+    CGFloat w = rect.size.width;
+    CGFloat h = rect.size.height;
+    if (self.navBarH == 0 ) {
+        self.navBarH = h;
+        h = h + self.rootScrollViewHeight;
+    }
+    CGRect frameChanged = CGRectMake(x, y, w, h);
+    [self setFrame:frameChanged];
+}
+
+/*
 - (void)setRootScrollView:(UIScrollView *)rootScrollView{
     _rootScrollView = rootScrollView;
     self.scrollNavBar.rootScrollView = rootScrollView;
@@ -159,7 +191,7 @@
     CGRect frameChanged = CGRectMake(x, y, w, h);
     [self setFrame:frameChanged];
 }
-
+*/
 - (void)setBackgroundColor:(UIColor *)backgroundColor{
     [super setBackgroundColor:[UIColor clearColor]];
     self.scrollNavBar.backgroundColor = backgroundColor;
@@ -175,7 +207,6 @@
     [[HAItemManager shareitemManager] setScrollNavBar:self.scrollNavBar];
     [[HAItemManager shareitemManager] setSortItemView:self.sortItmView];
     [[HAItemManager shareitemManager] setItemTitles:(NSMutableArray *)titles];
-    
 }
 
 - (void)setTitleNormalColor:(UIColor *)titleNormalColor{
@@ -215,12 +246,14 @@
 
 #pragma -mark 初始化
 - (void)setup{
+    [self addSubview:self.rootScrollView];
     [self addSubview:self.sortItmView];
     [self addSubview:self.scrollNavBar];
     [self addSubview:self.navLine];
     [self addSubview:self.sortButton];
     [self addSubview:self.confirmButton];
     [self addSubview:self.tipsLabel];
+    
     self.clipsToBounds = YES;
     self.userInteractionEnabled = YES;
     if (!self.backgroundColor) {
@@ -238,9 +271,29 @@
     return self;
 }
 
+- (id)initWithTitles:(NSArray *)titles AndPageViews:(NSMutableArray *)pageViews{
+    self = [super init];
+    if (self) {
+        self.titles = titles;
+        self.pageViews = pageViews;
+        [self setup];
+    }
+    return self;
+}
+
 - (void)layoutSubviews{
     [super layoutSubviews];
- 
+    
+    CGFloat rootScrollViewX = 0;
+    CGFloat rootScrollViewY = self.navBarH;
+    CGFloat rootScrollViewW = self.width;
+    CGFloat rootScrollViewH = self.rootScrollViewHeight;
+    self.rootScrollView.frame = CGRectMake(rootScrollViewX, rootScrollViewY, rootScrollViewW, rootScrollViewH);
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self.rootScrollView reloadPageViews];
+    });
+    
     if (self.showSortbutton) {
         //显示排序按钮的布局
         CGFloat scrollX = 0;
@@ -249,12 +302,6 @@
         self.navBarH = scrollH;
         CGFloat scrollW = self.width - scrollH;
         self.scrollNavBar.frame = CGRectMake(scrollX, scrollY, scrollW, scrollH);
-        
-        CGFloat rootScrollX = 0;
-        CGFloat rootScrollY = self.navBarH;
-        CGFloat rootScrollW = self.rootScrollView.width;
-        CGFloat rootScrollH = self.rootScrollView.height;
-        self.rootScrollView.frame = CGRectMake(rootScrollX, rootScrollY, rootScrollW, rootScrollH);
         
         CGFloat sortItemX = 0;
         CGFloat sortItemY = SortItemViewY;
@@ -287,12 +334,6 @@
         self.navBarH = scrollH;
         CGFloat scrollW = self.width;
         self.scrollNavBar.frame = CGRectMake(scrollX, scrollY, scrollW, scrollH);
-        
-        CGFloat rootScrollX = 0;
-        CGFloat rootScrollY = self.navBarH;
-        CGFloat rootScrollW = self.rootScrollView.width;
-        CGFloat rootScrollH = self.rootScrollView.height;
-        self.rootScrollView.frame = CGRectMake(rootScrollX, rootScrollY, rootScrollW, rootScrollH);
     }
     
     if (self.showNarLine) {

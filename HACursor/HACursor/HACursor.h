@@ -10,7 +10,7 @@
 
 @interface HACursor : UIView
 
-@property (nonatomic, weak) UIScrollView *rootScrollView;
+
 
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @property (nonatomic, strong) NSArray *titles;
@@ -25,4 +25,8 @@
 @property (nonatomic, assign) NSInteger minFontSize;
 @property (nonatomic, assign) NSInteger maxFontSize;
 @property (nonatomic, assign) NSInteger defFontSize;
+@property (nonatomic, assign) CGFloat rootScrollViewHeight;
+
+- (id)initWithTitles:(NSArray *)titles AndPageViews:(NSArray *)pageViews;
+
 @end

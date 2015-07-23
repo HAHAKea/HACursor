@@ -22,6 +22,9 @@
 		1B03B6B11B5C094700BA7B13 /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */; };
 		1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */; };
 		1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6B41B5C097200BA7B13 /* HATestView.m */; };
+		1B3AB9BF1B61307900955EEC /* HARootScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AB9B81B61307900955EEC /* HARootScrollView.m */; };
+		1B3AB9C01B61307900955EEC /* HARootScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AB9BA1B61307900955EEC /* HARootScrollViewCell.m */; };
+		1B3AB9C11B61307900955EEC /* HARootScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AB9BC1B61307900955EEC /* HARootScrollViewManager.m */; };
 		1B7041BD1B5F864300142927 /* icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B7041BC1B5F864300142927 /* icons.bundle */; };
 		1B7041BE1B5F864300142927 /* icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B7041BC1B5F864300142927 /* icons.bundle */; };
 /* End PBXBuildFile section */
@@ -66,6 +69,12 @@
 		1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		1B03B6B31B5C097200BA7B13 /* HATestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATestView.h; sourceTree = "<group>"; };
 		1B03B6B41B5C097200BA7B13 /* HATestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATestView.m; sourceTree = "<group>"; };
+		1B3AB9B71B61307900955EEC /* HARootScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollView.h; sourceTree = "<group>"; };
+		1B3AB9B81B61307900955EEC /* HARootScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollView.m; sourceTree = "<group>"; };
+		1B3AB9B91B61307900955EEC /* HARootScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollViewCell.h; sourceTree = "<group>"; };
+		1B3AB9BA1B61307900955EEC /* HARootScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollViewCell.m; sourceTree = "<group>"; };
+		1B3AB9BB1B61307900955EEC /* HARootScrollViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollViewManager.h; sourceTree = "<group>"; };
+		1B3AB9BC1B61307900955EEC /* HARootScrollViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollViewManager.m; sourceTree = "<group>"; };
 		1B7041BC1B5F864300142927 /* icons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icons.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -152,6 +161,7 @@
 		1B03B69B1B5C094700BA7B13 /* HACursor */ = {
 			isa = PBXGroup;
 			children = (
+				1B3AB9B61B61307900955EEC /* HARootScrollView */,
 				1B7041BC1B5F864300142927 /* icons.bundle */,
 				1B03B69D1B5C094700BA7B13 /* HACursor.h */,
 				1B03B69E1B5C094700BA7B13 /* HACursor.m */,
@@ -169,6 +179,19 @@
 				1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */,
 			);
 			path = HACursor;
+			sourceTree = "<group>";
+		};
+		1B3AB9B61B61307900955EEC /* HARootScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				1B3AB9B71B61307900955EEC /* HARootScrollView.h */,
+				1B3AB9B81B61307900955EEC /* HARootScrollView.m */,
+				1B3AB9B91B61307900955EEC /* HARootScrollViewCell.h */,
+				1B3AB9BA1B61307900955EEC /* HARootScrollViewCell.m */,
+				1B3AB9BB1B61307900955EEC /* HARootScrollViewManager.h */,
+				1B3AB9BC1B61307900955EEC /* HARootScrollViewManager.m */,
+			);
+			path = HARootScrollView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,12 +300,15 @@
 				1B03B6AC1B5C094700BA7B13 /* HACursor.m in Sources */,
 				1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */,
 				1B03B6AE1B5C094700BA7B13 /* HAScrollNavBar.m in Sources */,
+				1B3AB9C11B61307900955EEC /* HARootScrollViewManager.m in Sources */,
 				1B03B67E1B5C08B300BA7B13 /* ViewController.m in Sources */,
 				1B03B67B1B5C08B300BA7B13 /* AppDelegate.m in Sources */,
 				1B03B6AD1B5C094700BA7B13 /* HAItemManager.m in Sources */,
 				1B03B6B11B5C094700BA7B13 /* UIColor+RGBA.m in Sources */,
+				1B3AB9BF1B61307900955EEC /* HARootScrollView.m in Sources */,
 				1B03B6AF1B5C094700BA7B13 /* HASortButton.m in Sources */,
 				1B03B6B01B5C094700BA7B13 /* HASortItemView.m in Sources */,
+				1B3AB9C01B61307900955EEC /* HARootScrollViewCell.m in Sources */,
 				1B03B6781B5C08B300BA7B13 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

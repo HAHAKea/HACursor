@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HARootScrollView.h"
 
 @interface HAScrollNavBar : UIScrollView
 
 @property (nonatomic, copy) NSString *currentTitle;
 
-@property (nonatomic, weak) UIScrollView *rootScrollView;
+@property (nonatomic, weak) HARootScrollView *rootScrollView;
 @property (nonatomic, weak) UIButton *currectItem;
 @property (nonatomic, weak) UIButton *oldItem;
 @property (nonatomic, strong) NSMutableArray *itemKeys;
