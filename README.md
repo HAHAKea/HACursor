@@ -16,12 +16,12 @@
     HACursor *cursor = [[HACursor alloc]init];
     cursor.frame = CGRectMake(0, 20, self.view.width, 45);
     
-    //需要管理的scrollView （必选！！）
-    cursor.rootScrollView = scrollView;
     //显示的标题栏的标题（必选！！）
     cursor.titles = self.titles; 
     //需要管理的子页面（必选！！）
     cursor.pageViews = self.pageViews;
+    //设置rootScrollView的高度（必选！！）
+    cursor.rootScrollViewHeight = self.view.frame.size.height - 65;
     
     //设置标题普通状态下的颜色
     cursor.titleNormalColor = [UIColor whiteColor];
