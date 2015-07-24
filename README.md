@@ -4,11 +4,11 @@
 **HACursor**，是一个对横向ScrollView中的视图进行管理的UI控件。只要几行代码就可以集成类似于网易新闻对主题页面进行排序，删除操作的功能。
 ## Presentation:
 #### 滚动效果
-![(下拉刷新02-动画图片)](http://ww2.sinaimg.cn/bmiddle/96a577c4gw1eubkkqtxoeg20ad0j1n9b.gif)
+![()](http://ww2.sinaimg.cn/bmiddle/96a577c4gw1eubkkqtxoeg20ad0j1n9b.gif)
 #### 排序效果
-![(下拉刷新02-动画图片)](http://ww4.sinaimg.cn/bmiddle/96a577c4gw1eubkkz6pz2g20ad0j1az2.gif)
+![()](http://ww4.sinaimg.cn/bmiddle/96a577c4gw1eubkkz6pz2g20ad0j1az2.gif)
 #### 删除效果
-![(下拉刷新02-动画图片)](http://ww2.sinaimg.cn/bmiddle/96a577c4gw1eubkl6e1akg20ad0j1e82.gif)
+![()](http://ww2.sinaimg.cn/bmiddle/96a577c4gw1eubkl6e1akg20ad0j1e82.gif)
 
 ## Usage:
 #### 代码例子:其中（必选）为必须设置的属性，其余可根据需要来设置
