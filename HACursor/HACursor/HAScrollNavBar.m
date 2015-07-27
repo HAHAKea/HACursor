@@ -273,6 +273,16 @@
             self.itemW = buttonW;
         }
     }
+    
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        [self addOffset];
+    });
+}
+
+- (void)addOffset{
+    [self.rootScrollView setContentOffset:CGPointMake(1, 0)];
+    [self.rootScrollView setContentOffset:CGPointMake(0, 0)];
 }
 
 - (void)layoutSubviews{
@@ -319,8 +329,8 @@
 }
 
 - (void)changeButtonFontWithOffset:(CGFloat)offset andWidth:(CGFloat)width{
-//    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
-//    self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+    self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
     
     [self.firstButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
     [self.secButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
