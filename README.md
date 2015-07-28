@@ -31,13 +31,14 @@
     cursor.showSortbutton = YES;
     //设置背景颜色
     cursor.backgroundColor = [UIColor yellowColor];
-    //设置最小化的字体
+    //设置最小化的字体，默认的最小值是5，小于默认值的话按默认值设置，(默认的最小值 < 设置值 <默认的最大值) 按设置的值处理
     cursor.minFontSize = 10.0;
-    //设置最大化的字体
+    //设置最大化的字体，默认的最大值是25，小于默认值的话按默认值设置，大于默认值按设置的值处理
     cursor.maxFontSize = 30.0;
     //设置是否需要渐变字体的大小
     cursor.isGraduallyChangFont = NO;
     //设置是否需要渐变字体的颜色
+    //在isGraduallyChangFont为NO的时候，isGraduallyChangColor不会有效果
     cursor.isGraduallyChangColor = NO;
     [self.view addSubview:cursor];
 ## Requirement:
