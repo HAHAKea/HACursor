@@ -27,14 +27,20 @@
     cursor.frame = CGRectMake(0, 64, self.view.width, 45);
     cursor.titles = self.titles;
     cursor.pageViews = [self createPageViews];
+    //设置根滚动视图的高度
     cursor.rootScrollViewHeight = self.view.frame.size.height - 109;
+    //默认值是白色
     cursor.titleNormalColor = [UIColor whiteColor];
+    //默认值是白色
     cursor.titleSelectedColor = [UIColor redColor];
     cursor.showSortbutton = YES;
-    //cursor.backgroundColor = [UIColor yellowColor];
-    //cursor.minFontSize = 10;
+    //默认的最小值是5，小于默认值的话按默认值设置
+    cursor.minFontSize = 6;
+    //默认的最大值是25，小于默认值的话按默认值设置，大于默认值按设置的值处理
     //cursor.maxFontSize = 30;
     //cursor.isGraduallyChangFont = NO;
+    
+    //在isGraduallyChangFont为NO的时候，isGraduallyChangColor不会有效果
     //cursor.isGraduallyChangColor = NO;
     [self.view addSubview:cursor];
 }

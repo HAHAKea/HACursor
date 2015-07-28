@@ -13,9 +13,9 @@
 
 
 #define ItemWidth 75
-#define FontMinSize 15
+#define FontMinSize 10
 #define FontDetLeSize 10
-#define FontDefSize 16
+#define FontDefSize 15
 #define StaticItemIndex 3
 #define scrollNavBarUpdate @"scrollNavBarUpdate"
 #define HAScrollItemIndex @"index"
@@ -45,6 +45,7 @@
 @property (nonatomic, assign) CGFloat blue2;
 @property (nonatomic, assign) CGFloat alpha2;
 @property (nonatomic, assign) NSInteger currctIndex;
+
 @end
 
 @implementation HAScrollNavBar
@@ -77,8 +78,8 @@
     UIButton *button = [[UIButton alloc]init];
     [button setTitle:title forState:UIControlStateNormal];
     button.backgroundColor = [UIColor clearColor];
-    button.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
-    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    NSInteger fontSize = self.minFontSize > 0 ? self.minFontSize : FontMinSize;
+    button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
     [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
     [self addSubview:button];
     return button;
@@ -121,7 +122,7 @@
 - (void)setTitleNormalColor:(UIColor *)titleNormalColor{
     _titleNormalColor = titleNormalColor;
     [self.itemsDic enumerateKeysAndObjectsUsingBlock:^(id key, UIButton * button, BOOL *stop) {
-         [button setTitleColor:titleNormalColor forState:UIControlStateNormal];
+        [button setTitleColor:titleNormalColor forState:UIControlStateNormal];
     }];
 
     RGBA rgba = RGBAFromUIColor(titleNormalColor);
@@ -133,6 +134,9 @@
 
 - (void)setTitleSelectedColor:(UIColor *)titleSelectedColor{
     _titleSelectedColor = titleSelectedColor;
+    [self.itemsDic enumerateKeysAndObjectsUsingBlock:^(id key, UIButton * button, BOOL *stop) {
+        [button setTitleColor:titleSelectedColor forState:UIControlStateSelected];
+    }];
     RGBA rgba = RGBAFromUIColor(titleSelectedColor);
     self.red2 = rgba.r;
     self.green2 = rgba.g;
@@ -145,24 +149,41 @@
     if (!isGraduallyChangColor) {
         [self.itemsDic enumerateKeysAndObjectsUsingBlock:^(id key, UIButton *button, BOOL *stop) {
             [button setTitleColor:self.titleSelectedColor forState:UIControlStateSelected];
+            [button setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
         }];
     }
 }
 
-- (void)setMinFontSize:(NSInteger)minFontSize{
-    if (minFontSize > 0) {
-        _minFontSize = minFontSize;
-    }else{
-        _minFontSize = FontMinSize;
+- (void)setIsGraduallyChangFont:(BOOL)isGraduallyChangFont{
+    _isGraduallyChangFont = isGraduallyChangFont;
+    if (!_isGraduallyChangFont) {
+       //[self setItemsFontWithFontSize:_minFontSize];
     }
 }
 
+- (void)setMinFontSize:(NSInteger)minFontSize{
+    if (minFontSize > FontMinSize && minFontSize < FontDefSize + FontDetLeSize) {
+        _minFontSize = minFontSize;
+        [self setItemsFontWithFontSize:_minFontSize];
+    }else{
+        _minFontSize = FontMinSize;
+    }
+    [self setItemsFontWithFontSize:_minFontSize];
+}
+
+
 - (void)setMaxFontSize:(NSInteger)maxFontSize{
-    if (maxFontSize > 0) {
+    if (maxFontSize > FontDefSize + FontDetLeSize) {
         _maxFontSize = maxFontSize;
     }else{
         _maxFontSize = FontMinSize + FontDetLeSize;
     }
+}
+
+- (void)setItemsFontWithFontSize:(NSInteger)size{
+    [self.itemsDic enumerateKeysAndObjectsUsingBlock:^(id key, UIButton * obj, BOOL *stop) {
+        obj.titleLabel.font = [UIFont systemFontOfSize:size];
+    }];
 }
 
 - (instancetype)init
@@ -202,7 +223,6 @@
         button.tag = i;
         if (i == 0) {
             button.selected = YES;
-            [button setTitleColor:self.titleSelectedColor forState:UIControlStateSelected];
             if (self.maxFontSize) {
                 button.titleLabel.font = [UIFont systemFontOfSize:self.maxFontSize];
             }else{
@@ -276,7 +296,13 @@
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        [self addOffset];
+        if (self.isGraduallyChangFont) {
+           [self addOffset];
+        }else{
+             NSInteger fontSize = self.maxFontSize > 0 ? self.maxFontSize : (FontDetLeSize + FontDefSize);
+            UIButton *button = [self.itemsDic objectForKey:self.tmpKeys[0]];
+            button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
+        }
     });
 }
 
@@ -290,11 +316,34 @@
     [self layoutButtons];
 }
 
-- (void)buttonClick:(UIButton *)button{
+
+- (void)clickButtonWhenNotGraduallyChangFont:(UIButton *)button{
     _oldItem = _currectItem;
+    if (self.minFontSize) {
+        _oldItem.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
+    }else{
+        _oldItem.titleLabel.font = [UIFont systemFontOfSize:FontMinSize];
+    }
     _currectItem.selected = NO;
     button.selected = YES;
     _currectItem = button;
+    
+    if (self.maxFontSize) {
+        _currectItem.titleLabel.font = [UIFont systemFontOfSize:self.maxFontSize];
+    }else{
+        _currectItem.titleLabel.font = [UIFont systemFontOfSize:FontDetLeSize + FontDefSize];
+    }
+}
+
+- (void)buttonClick:(UIButton *)button{
+    if (!self.isGraduallyChangFont) {
+        [self clickButtonWhenNotGraduallyChangFont:button];
+    }else{
+        _oldItem = _currectItem;
+        _currectItem.selected = NO;
+        button.selected = YES;
+        _currectItem = button;
+    }
     
     CGFloat offX = button.tag * self.rootScrollView.width;
     NSLog(@"off ---> %f",offX);
@@ -302,12 +351,35 @@
     [self.rootScrollView setContentOffset:CGPointMake(offX, 0) animated:YES];
 }
 
-- (void)setSelectItemWithIndex:(NSInteger)index{
+- (void)selectItemWhenNotGraduallyChangFont:(UIButton *)button{
     _oldItem = _currectItem;
+    if (self.minFontSize) {
+        _oldItem.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
+    }else{
+        _oldItem.titleLabel.font = [UIFont systemFontOfSize:FontMinSize];
+    }
     _currectItem.selected = NO;
-    UIButton *button = [self.itemsDic objectForKey:self.tmpKeys[index]];
     button.selected = YES;
     _currectItem = button;
+    if (self.maxFontSize) {
+        _currectItem.titleLabel.font = [UIFont systemFontOfSize:self.maxFontSize];
+    }else{
+        _currectItem.titleLabel.font = [UIFont systemFontOfSize:FontDetLeSize + FontDefSize];
+    }
+}
+
+- (void)setSelectItemWithIndex:(NSInteger)index{
+    UIButton *button = [self.itemsDic objectForKey:self.tmpKeys[index]];
+    if (!self.isGraduallyChangFont) {
+        [self selectItemWhenNotGraduallyChangFont:button];
+    }else{
+        _oldItem = _currectItem;
+        _currectItem.selected = NO;
+        button.selected = YES;
+        _currectItem = button;
+    }
+    
+    
     [self buttonMoveAnimationWithIndex:index];
 }
 
@@ -329,8 +401,8 @@
 }
 
 - (void)changeButtonFontWithOffset:(CGFloat)offset andWidth:(CGFloat)width{
-    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
-    self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+//    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+//    self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
     
     [self.firstButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
     [self.secButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
@@ -349,11 +421,22 @@
         CGFloat fontSize1;
         CGFloat fontSize2;
         if (self.maxFontSize) {
-            fontSize1 = (1- p) * (self.maxFontSize - self.minFontSize) + self.minFontSize;
-            fontSize2 = p * (self.maxFontSize - self.minFontSize) + self.minFontSize;
+            if (self.minFontSize) {
+                fontSize1 = (1- p) * (self.maxFontSize - self.minFontSize) + self.minFontSize;
+                fontSize2 = p * (self.maxFontSize - self.minFontSize) + self.minFontSize;
+            }else{
+                fontSize1 = (1- p) * (self.maxFontSize - FontMinSize) + FontMinSize;
+                fontSize2 = p * (self.maxFontSize - FontMinSize) + FontMinSize;
+            }
         }else{
-            fontSize1 = (1- p) * FontDetLeSize + FontMinSize;
-            fontSize2 = p * FontDetLeSize + FontMinSize;
+            if (self.minFontSize) {
+                fontSize1 = (1- p) * FontDetLeSize + self.minFontSize;
+                fontSize2 = p * FontDetLeSize + self.minFontSize;
+                
+            }else{
+                fontSize1 = (1- p) * FontDetLeSize + FontMinSize;
+                fontSize2 = p * FontDetLeSize + FontMinSize;
+            }
         }
         self.firstButton.titleLabel.font = [UIFont systemFontOfSize:fontSize1];
         self.secButton.titleLabel.font = [UIFont systemFontOfSize:fontSize2];
