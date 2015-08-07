@@ -401,8 +401,15 @@
 }
 
 - (void)changeButtonFontWithOffset:(CGFloat)offset andWidth:(CGFloat)width{
-//    self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
-//    self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+    
+    if (self.minFontSize) {
+        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
+        self.secButton.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
+    }else{
+        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+        self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+    }
+   
     
     [self.firstButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
     [self.secButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
@@ -453,6 +460,7 @@
         
         [self.firstButton setTitleColor:[UIColor colorWithRed:redTemp1 green:greenTemp1 blue:blueTemp1 alpha:1] forState:UIControlStateNormal];
         [self.secButton setTitleColor:[UIColor colorWithRed:redTemp2 green:greenTemp2 blue:blueTemp2 alpha:1] forState:UIControlStateNormal];
+        //self.pagingEnabled = NO;
     }
 }
 

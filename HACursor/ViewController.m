@@ -39,7 +39,6 @@
     //默认的最大值是25，小于默认值的话按默认值设置，大于默认值按设置的值处理
     //cursor.maxFontSize = 30;
     //cursor.isGraduallyChangFont = NO;
-    
     //在isGraduallyChangFont为NO的时候，isGraduallyChangColor不会有效果
     //cursor.isGraduallyChangColor = NO;
     [self.view addSubview:cursor];
