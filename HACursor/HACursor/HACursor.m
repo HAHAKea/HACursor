@@ -39,6 +39,7 @@
 @property (nonatomic, assign) BOOL showNarLine;
 @property (nonatomic, assign) BOOL isDrag;
 @property (nonatomic, assign) BOOL isRefash;
+@property (nonatomic, assign) BOOL isLayout;
 @property (nonatomic, assign) CGFloat oldOffset;
 @property (nonatomic, assign) CGFloat navBarH;
 @property (nonatomic, assign) NSInteger oldBtnIndex;
@@ -290,10 +291,11 @@
     CGFloat rootScrollViewW = self.width;
     CGFloat rootScrollViewH = self.rootScrollViewHeight;
     self.rootScrollView.frame = CGRectMake(rootScrollViewX, rootScrollViewY, rootScrollViewW, rootScrollViewH);
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    
+    if (!self.isLayout) {
         [self.rootScrollView reloadPageViews];
-    });
+        self.isLayout = YES;
+    }
     
     if (self.showSortbutton) {
         //显示排序按钮的布局
