@@ -45,17 +45,19 @@
 @property (nonatomic, assign) CGFloat blue2;
 @property (nonatomic, assign) CGFloat alpha2;
 @property (nonatomic, assign) NSInteger currctIndex;
-
+@property (nonatomic, assign) BOOL isSetUpItem;
+@property (nonatomic, assign) BOOL isLayoutitems;
+@property (nonatomic, assign) BOOL isHiddenAllItem;
 @end
 
 @implementation HAScrollNavBar
 - (void)setItemKeys:(NSMutableArray *)itemKeys{
     _itemKeys = itemKeys;
     self.tmpKeys = itemKeys;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (!self.isSetUpItem) {
         [self setupItems];
-    });
+        self.isSetUpItem = YES;
+    }
 }
 
 - (NSMutableArray *)tmpKeys{
@@ -294,16 +296,16 @@
         }
     }
     
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (!self.isLayoutitems) {
         if (self.isGraduallyChangFont) {
-           [self addOffset];
+            [self addOffset];
         }else{
-             NSInteger fontSize = self.maxFontSize > 0 ? self.maxFontSize : (FontDetLeSize + FontDefSize);
+            NSInteger fontSize = self.maxFontSize > 0 ? self.maxFontSize : (FontDetLeSize + FontDefSize);
             UIButton *button = [self.itemsDic objectForKey:self.tmpKeys[0]];
             button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
         }
-    });
+        self.isLayoutitems = YES;
+    }
 }
 
 - (void)addOffset{
@@ -477,9 +479,11 @@
 
 - (void)hiddenAllItems{
     static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (!self.isHiddenAllItem) {
         [self setupTmpPageViewDic];
-    });
+        self.isHiddenAllItem = YES;
+    }
+    
     for (int i = 0; i < self.tmpKeys.count; i++) {
         UIButton *button = [self getItemWithIndex:i];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
