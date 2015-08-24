@@ -33,6 +33,7 @@
     cursor.titleNormalColor = [UIColor whiteColor];
     //默认值是白色
     cursor.titleSelectedColor = [UIColor redColor];
+    //是否显示排序按钮
     cursor.showSortbutton = YES;
     //默认的最小值是5，小于默认值的话按默认值设置
     cursor.minFontSize = 6;

@@ -34,6 +34,7 @@
 @property (nonatomic, assign) CGRect tmpRect;
 @property (nonatomic, assign) BOOL isMoving;
 @property (nonatomic, assign) BOOL isChange;
+@property (nonatomic, assign) BOOL isSetItemkey;
 @end
 
 @implementation HASortItemView
@@ -54,10 +55,10 @@
 
 - (void)setItemKeys:(NSMutableArray *)itemKeys{
     _itemKeys = itemKeys;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
+    if (!self.isSetItemkey) {
         [self setupPositionViewsAndItemsWithKeys:itemKeys];
-    });
+        self.isSetItemkey = YES;
+    }
 }
 
 - (void)setupPositionViewsAndItemsWithKeys:(NSArray *)keys{
@@ -131,8 +132,8 @@
     [self.itemsDic removeObjectForKey:item.titleLabel.text];
 
     [[HAItemManager shareitemManager] setItemTitles:self.tmpKeys];
-    [[HAItemManager shareitemManager] printTitles];
     [[NSNotificationCenter defaultCenter] postNotificationName:scrollNavBarUpdate object:item.titleLabel.text];
+    
     if ([item.titleLabel.text isEqualToString:self.selectButtonTitle]) {
          [[NSNotificationCenter defaultCenter] postNotificationName:moveToTop object:item.titleLabel.text];
         [self setSelectButtonTitle:[self.itemKeys firstObject]];
@@ -173,7 +174,6 @@
                 self.isMoving = YES;
                 NSInteger selectBtnIndex = [self.tmpKeys indexOfObject:self.selectButton.titleLabel.text];
                 NSInteger otherBtnIndex = [self.tmpKeys indexOfObject:self.otherButton.titleLabel.text];
-                NSLog(@"selectBtnIndex %ld  --- > otherBtnIndex %ld" ,selectBtnIndex, otherBtnIndex);
                 
                 self.tmpRect = self.otherButton.frame;
                 [self animationBetweenSelectItemIndex:selectBtnIndex AndOtherItemIndex:otherBtnIndex];
