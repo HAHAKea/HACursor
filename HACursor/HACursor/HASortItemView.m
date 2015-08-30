@@ -11,14 +11,14 @@
 #import "HASortButton.h"
 #import "HAItemManager.h"
 
-#define ItemW 50
-#define ItemH 30
-#define MarginH 25
-#define RowNum 4
-#define scrollNavBarUpdate @"scrollNavBarUpdate"
+#define ItemW                     50
+#define ItemH                     30
+#define MarginH                   25
+#define RowNum                    4
+#define scrollNavBarUpdate        @"scrollNavBarUpdate"
 #define rootScrollUpdateAfterSort @"updateAfterSort"
-#define moveToSelectedItem @"moveToSelectedItem"
-#define moveToTop @"moveToTop"
+#define moveToSelectedItem        @"moveToSelectedItem"
+#define moveToTop                 @"moveToTop"
 
 @interface HASortItemView()
 

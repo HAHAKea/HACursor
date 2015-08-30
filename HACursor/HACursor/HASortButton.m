@@ -10,8 +10,8 @@
 #import "UIView+Extension.h"
 
 #define angle2Radian(angle) ((angle) / 180.0 * M_PI)
-#define deletItemW 15
-#define iconName(file) [@"icons.bundle" stringByAppendingPathComponent:file]
+#define deletItemW                             15
+#define iconName(file) [@"icons.bundle"        stringByAppendingPathComponent:file]
 
 @interface HASortButton()
 

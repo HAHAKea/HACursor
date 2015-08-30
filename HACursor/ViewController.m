@@ -20,6 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+    [self.view addSubview:view];
+    
     //不允许有重复的标题
     self.titles = @[@"网易",@"新浪",@"腾讯",@"苹果",@"搜狐",@"淘宝",@"京东",@"百度",@"有道",@"小米",@"华为",@"三星"];
     
@@ -28,7 +32,7 @@
     cursor.titles = self.titles;
     cursor.pageViews = [self createPageViews];
     //设置根滚动视图的高度
-    cursor.rootScrollViewHeight = self.view.frame.size.height - 109;
+    cursor.rootScrollViewHeight = self.view.frame.size.height -152;
     //默认值是白色
     cursor.titleNormalColor = [UIColor whiteColor];
     //默认值是白色
@@ -36,7 +40,7 @@
     //是否显示排序按钮
     cursor.showSortbutton = YES;
     //默认的最小值是5，小于默认值的话按默认值设置
-    cursor.minFontSize = 6;
+    cursor.minFontSize = 11;
     //默认的最大值是25，小于默认值的话按默认值设置，大于默认值按设置的值处理
     //cursor.maxFontSize = 30;
     //cursor.isGraduallyChangFont = NO;

@@ -10,23 +10,22 @@
 		1B03B6781B5C08B300BA7B13 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6771B5C08B300BA7B13 /* main.m */; };
 		1B03B67B1B5C08B300BA7B13 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B67A1B5C08B300BA7B13 /* AppDelegate.m */; };
 		1B03B67E1B5C08B300BA7B13 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B67D1B5C08B300BA7B13 /* ViewController.m */; };
-		1B03B6811B5C08B300BA7B13 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B67F1B5C08B300BA7B13 /* Main.storyboard */; };
 		1B03B6831B5C08B300BA7B13 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B6821B5C08B300BA7B13 /* Images.xcassets */; };
 		1B03B6861B5C08B300BA7B13 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1B03B6841B5C08B300BA7B13 /* LaunchScreen.xib */; };
 		1B03B6921B5C08B300BA7B13 /* HACursorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6911B5C08B300BA7B13 /* HACursorTests.m */; };
-		1B03B6AC1B5C094700BA7B13 /* HACursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B69E1B5C094700BA7B13 /* HACursor.m */; };
-		1B03B6AD1B5C094700BA7B13 /* HAItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A01B5C094700BA7B13 /* HAItemManager.m */; };
-		1B03B6AE1B5C094700BA7B13 /* HAScrollNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A21B5C094700BA7B13 /* HAScrollNavBar.m */; };
-		1B03B6AF1B5C094700BA7B13 /* HASortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A41B5C094700BA7B13 /* HASortButton.m */; };
-		1B03B6B01B5C094700BA7B13 /* HASortItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A61B5C094700BA7B13 /* HASortItemView.m */; };
-		1B03B6B11B5C094700BA7B13 /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */; };
-		1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */; };
 		1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B03B6B41B5C097200BA7B13 /* HATestView.m */; };
-		1B3AB9BF1B61307900955EEC /* HARootScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AB9B81B61307900955EEC /* HARootScrollView.m */; };
-		1B3AB9C01B61307900955EEC /* HARootScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AB9BA1B61307900955EEC /* HARootScrollViewCell.m */; };
-		1B3AB9C11B61307900955EEC /* HARootScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B3AB9BC1B61307900955EEC /* HARootScrollViewManager.m */; };
-		1B7041BD1B5F864300142927 /* icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B7041BC1B5F864300142927 /* icons.bundle */; };
-		1B7041BE1B5F864300142927 /* icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1B7041BC1B5F864300142927 /* icons.bundle */; };
+		1BDD56E61B92F03600DA6FDA /* HAAnimationTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56CF1B92F03600DA6FDA /* HAAnimationTool.m */; };
+		1BDD56E71B92F03600DA6FDA /* HACursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56D11B92F03600DA6FDA /* HACursor.m */; };
+		1BDD56E81B92F03600DA6FDA /* HAItemManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56D31B92F03600DA6FDA /* HAItemManager.m */; };
+		1BDD56E91B92F03600DA6FDA /* HARootScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56D61B92F03600DA6FDA /* HARootScrollView.m */; };
+		1BDD56EA1B92F03600DA6FDA /* HARootScrollViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56D81B92F03600DA6FDA /* HARootScrollViewCell.m */; };
+		1BDD56EB1B92F03600DA6FDA /* HARootScrollViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56DA1B92F03600DA6FDA /* HARootScrollViewManager.m */; };
+		1BDD56EC1B92F03600DA6FDA /* HAScrollNavBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56DC1B92F03600DA6FDA /* HAScrollNavBar.m */; };
+		1BDD56ED1B92F03600DA6FDA /* HASortButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56DE1B92F03600DA6FDA /* HASortButton.m */; };
+		1BDD56EE1B92F03600DA6FDA /* HASortItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56E01B92F03600DA6FDA /* HASortItemView.m */; };
+		1BDD56EF1B92F03600DA6FDA /* icons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1BDD56E11B92F03600DA6FDA /* icons.bundle */; };
+		1BDD56F01B92F03600DA6FDA /* UIColor+RGBA.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56E31B92F03600DA6FDA /* UIColor+RGBA.m */; };
+		1BDD56F11B92F03600DA6FDA /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1BDD56E51B92F03600DA6FDA /* UIView+Extension.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,35 +46,36 @@
 		1B03B67A1B5C08B300BA7B13 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		1B03B67C1B5C08B300BA7B13 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		1B03B67D1B5C08B300BA7B13 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		1B03B6801B5C08B300BA7B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		1B03B6821B5C08B300BA7B13 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		1B03B6851B5C08B300BA7B13 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		1B03B68B1B5C08B300BA7B13 /* HACursorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HACursorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B03B6901B5C08B300BA7B13 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1B03B6911B5C08B300BA7B13 /* HACursorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HACursorTests.m; sourceTree = "<group>"; };
-		1B03B69D1B5C094700BA7B13 /* HACursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACursor.h; sourceTree = "<group>"; };
-		1B03B69E1B5C094700BA7B13 /* HACursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACursor.m; sourceTree = "<group>"; };
-		1B03B69F1B5C094700BA7B13 /* HAItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAItemManager.h; sourceTree = "<group>"; };
-		1B03B6A01B5C094700BA7B13 /* HAItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAItemManager.m; sourceTree = "<group>"; };
-		1B03B6A11B5C094700BA7B13 /* HAScrollNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAScrollNavBar.h; sourceTree = "<group>"; };
-		1B03B6A21B5C094700BA7B13 /* HAScrollNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAScrollNavBar.m; sourceTree = "<group>"; };
-		1B03B6A31B5C094700BA7B13 /* HASortButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASortButton.h; sourceTree = "<group>"; };
-		1B03B6A41B5C094700BA7B13 /* HASortButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HASortButton.m; sourceTree = "<group>"; };
-		1B03B6A51B5C094700BA7B13 /* HASortItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASortItemView.h; sourceTree = "<group>"; };
-		1B03B6A61B5C094700BA7B13 /* HASortItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HASortItemView.m; sourceTree = "<group>"; };
-		1B03B6A71B5C094700BA7B13 /* UIColor+RGBA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBA.h"; sourceTree = "<group>"; };
-		1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBA.m"; sourceTree = "<group>"; };
-		1B03B6A91B5C094700BA7B13 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
-		1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 		1B03B6B31B5C097200BA7B13 /* HATestView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HATestView.h; sourceTree = "<group>"; };
 		1B03B6B41B5C097200BA7B13 /* HATestView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HATestView.m; sourceTree = "<group>"; };
-		1B3AB9B71B61307900955EEC /* HARootScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollView.h; sourceTree = "<group>"; };
-		1B3AB9B81B61307900955EEC /* HARootScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollView.m; sourceTree = "<group>"; };
-		1B3AB9B91B61307900955EEC /* HARootScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollViewCell.h; sourceTree = "<group>"; };
-		1B3AB9BA1B61307900955EEC /* HARootScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollViewCell.m; sourceTree = "<group>"; };
-		1B3AB9BB1B61307900955EEC /* HARootScrollViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollViewManager.h; sourceTree = "<group>"; };
-		1B3AB9BC1B61307900955EEC /* HARootScrollViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollViewManager.m; sourceTree = "<group>"; };
-		1B7041BC1B5F864300142927 /* icons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icons.bundle; sourceTree = "<group>"; };
+		1BDD56CE1B92F03600DA6FDA /* HAAnimationTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAAnimationTool.h; sourceTree = "<group>"; };
+		1BDD56CF1B92F03600DA6FDA /* HAAnimationTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAAnimationTool.m; sourceTree = "<group>"; };
+		1BDD56D01B92F03600DA6FDA /* HACursor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HACursor.h; sourceTree = "<group>"; };
+		1BDD56D11B92F03600DA6FDA /* HACursor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HACursor.m; sourceTree = "<group>"; };
+		1BDD56D21B92F03600DA6FDA /* HAItemManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAItemManager.h; sourceTree = "<group>"; };
+		1BDD56D31B92F03600DA6FDA /* HAItemManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAItemManager.m; sourceTree = "<group>"; };
+		1BDD56D51B92F03600DA6FDA /* HARootScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollView.h; sourceTree = "<group>"; };
+		1BDD56D61B92F03600DA6FDA /* HARootScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollView.m; sourceTree = "<group>"; };
+		1BDD56D71B92F03600DA6FDA /* HARootScrollViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollViewCell.h; sourceTree = "<group>"; };
+		1BDD56D81B92F03600DA6FDA /* HARootScrollViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollViewCell.m; sourceTree = "<group>"; };
+		1BDD56D91B92F03600DA6FDA /* HARootScrollViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HARootScrollViewManager.h; sourceTree = "<group>"; };
+		1BDD56DA1B92F03600DA6FDA /* HARootScrollViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HARootScrollViewManager.m; sourceTree = "<group>"; };
+		1BDD56DB1B92F03600DA6FDA /* HAScrollNavBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HAScrollNavBar.h; sourceTree = "<group>"; };
+		1BDD56DC1B92F03600DA6FDA /* HAScrollNavBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HAScrollNavBar.m; sourceTree = "<group>"; };
+		1BDD56DD1B92F03600DA6FDA /* HASortButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASortButton.h; sourceTree = "<group>"; };
+		1BDD56DE1B92F03600DA6FDA /* HASortButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HASortButton.m; sourceTree = "<group>"; };
+		1BDD56DF1B92F03600DA6FDA /* HASortItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HASortItemView.h; sourceTree = "<group>"; };
+		1BDD56E01B92F03600DA6FDA /* HASortItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HASortItemView.m; sourceTree = "<group>"; };
+		1BDD56E11B92F03600DA6FDA /* icons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = icons.bundle; sourceTree = "<group>"; };
+		1BDD56E21B92F03600DA6FDA /* UIColor+RGBA.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+RGBA.h"; sourceTree = "<group>"; };
+		1BDD56E31B92F03600DA6FDA /* UIColor+RGBA.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+RGBA.m"; sourceTree = "<group>"; };
+		1BDD56E41B92F03600DA6FDA /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		1BDD56E51B92F03600DA6FDA /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +117,13 @@
 		1B03B6741B5C08B300BA7B13 /* HACursor */ = {
 			isa = PBXGroup;
 			children = (
-				1B03B69B1B5C094700BA7B13 /* HACursor */,
+				1BDD56CD1B92F03600DA6FDA /* HACursor */,
 				1B03B6791B5C08B300BA7B13 /* AppDelegate.h */,
 				1B03B67A1B5C08B300BA7B13 /* AppDelegate.m */,
 				1B03B67C1B5C08B300BA7B13 /* ViewController.h */,
 				1B03B67D1B5C08B300BA7B13 /* ViewController.m */,
 				1B03B6B31B5C097200BA7B13 /* HATestView.h */,
 				1B03B6B41B5C097200BA7B13 /* HATestView.m */,
-				1B03B67F1B5C08B300BA7B13 /* Main.storyboard */,
 				1B03B6821B5C08B300BA7B13 /* Images.xcassets */,
 				1B03B6841B5C08B300BA7B13 /* LaunchScreen.xib */,
 				1B03B6751B5C08B300BA7B13 /* Supporting Files */,
@@ -158,38 +157,40 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		1B03B69B1B5C094700BA7B13 /* HACursor */ = {
+		1BDD56CD1B92F03600DA6FDA /* HACursor */ = {
 			isa = PBXGroup;
 			children = (
-				1B3AB9B61B61307900955EEC /* HARootScrollView */,
-				1B7041BC1B5F864300142927 /* icons.bundle */,
-				1B03B69D1B5C094700BA7B13 /* HACursor.h */,
-				1B03B69E1B5C094700BA7B13 /* HACursor.m */,
-				1B03B69F1B5C094700BA7B13 /* HAItemManager.h */,
-				1B03B6A01B5C094700BA7B13 /* HAItemManager.m */,
-				1B03B6A11B5C094700BA7B13 /* HAScrollNavBar.h */,
-				1B03B6A21B5C094700BA7B13 /* HAScrollNavBar.m */,
-				1B03B6A31B5C094700BA7B13 /* HASortButton.h */,
-				1B03B6A41B5C094700BA7B13 /* HASortButton.m */,
-				1B03B6A51B5C094700BA7B13 /* HASortItemView.h */,
-				1B03B6A61B5C094700BA7B13 /* HASortItemView.m */,
-				1B03B6A71B5C094700BA7B13 /* UIColor+RGBA.h */,
-				1B03B6A81B5C094700BA7B13 /* UIColor+RGBA.m */,
-				1B03B6A91B5C094700BA7B13 /* UIView+Extension.h */,
-				1B03B6AA1B5C094700BA7B13 /* UIView+Extension.m */,
+				1BDD56D41B92F03600DA6FDA /* HARootScrollView */,
+				1BDD56CE1B92F03600DA6FDA /* HAAnimationTool.h */,
+				1BDD56CF1B92F03600DA6FDA /* HAAnimationTool.m */,
+				1BDD56D01B92F03600DA6FDA /* HACursor.h */,
+				1BDD56D11B92F03600DA6FDA /* HACursor.m */,
+				1BDD56D21B92F03600DA6FDA /* HAItemManager.h */,
+				1BDD56D31B92F03600DA6FDA /* HAItemManager.m */,
+				1BDD56DB1B92F03600DA6FDA /* HAScrollNavBar.h */,
+				1BDD56DC1B92F03600DA6FDA /* HAScrollNavBar.m */,
+				1BDD56DD1B92F03600DA6FDA /* HASortButton.h */,
+				1BDD56DE1B92F03600DA6FDA /* HASortButton.m */,
+				1BDD56DF1B92F03600DA6FDA /* HASortItemView.h */,
+				1BDD56E01B92F03600DA6FDA /* HASortItemView.m */,
+				1BDD56E11B92F03600DA6FDA /* icons.bundle */,
+				1BDD56E21B92F03600DA6FDA /* UIColor+RGBA.h */,
+				1BDD56E31B92F03600DA6FDA /* UIColor+RGBA.m */,
+				1BDD56E41B92F03600DA6FDA /* UIView+Extension.h */,
+				1BDD56E51B92F03600DA6FDA /* UIView+Extension.m */,
 			);
 			path = HACursor;
 			sourceTree = "<group>";
 		};
-		1B3AB9B61B61307900955EEC /* HARootScrollView */ = {
+		1BDD56D41B92F03600DA6FDA /* HARootScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				1B3AB9B71B61307900955EEC /* HARootScrollView.h */,
-				1B3AB9B81B61307900955EEC /* HARootScrollView.m */,
-				1B3AB9B91B61307900955EEC /* HARootScrollViewCell.h */,
-				1B3AB9BA1B61307900955EEC /* HARootScrollViewCell.m */,
-				1B3AB9BB1B61307900955EEC /* HARootScrollViewManager.h */,
-				1B3AB9BC1B61307900955EEC /* HARootScrollViewManager.m */,
+				1BDD56D51B92F03600DA6FDA /* HARootScrollView.h */,
+				1BDD56D61B92F03600DA6FDA /* HARootScrollView.m */,
+				1BDD56D71B92F03600DA6FDA /* HARootScrollViewCell.h */,
+				1BDD56D81B92F03600DA6FDA /* HARootScrollViewCell.m */,
+				1BDD56D91B92F03600DA6FDA /* HARootScrollViewManager.h */,
+				1BDD56DA1B92F03600DA6FDA /* HARootScrollViewManager.m */,
 			);
 			path = HARootScrollView;
 			sourceTree = "<group>";
@@ -274,8 +275,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7041BD1B5F864300142927 /* icons.bundle in Resources */,
-				1B03B6811B5C08B300BA7B13 /* Main.storyboard in Resources */,
+				1BDD56EF1B92F03600DA6FDA /* icons.bundle in Resources */,
 				1B03B6861B5C08B300BA7B13 /* LaunchScreen.xib in Resources */,
 				1B03B6831B5C08B300BA7B13 /* Images.xcassets in Resources */,
 			);
@@ -285,7 +285,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B7041BE1B5F864300142927 /* icons.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,19 +295,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1B03B6B21B5C094700BA7B13 /* UIView+Extension.m in Sources */,
-				1B03B6AC1B5C094700BA7B13 /* HACursor.m in Sources */,
+				1BDD56F11B92F03600DA6FDA /* UIView+Extension.m in Sources */,
 				1B03B6B51B5C097200BA7B13 /* HATestView.m in Sources */,
-				1B03B6AE1B5C094700BA7B13 /* HAScrollNavBar.m in Sources */,
-				1B3AB9C11B61307900955EEC /* HARootScrollViewManager.m in Sources */,
+				1BDD56EA1B92F03600DA6FDA /* HARootScrollViewCell.m in Sources */,
+				1BDD56E61B92F03600DA6FDA /* HAAnimationTool.m in Sources */,
+				1BDD56E71B92F03600DA6FDA /* HACursor.m in Sources */,
+				1BDD56EB1B92F03600DA6FDA /* HARootScrollViewManager.m in Sources */,
+				1BDD56F01B92F03600DA6FDA /* UIColor+RGBA.m in Sources */,
+				1BDD56EE1B92F03600DA6FDA /* HASortItemView.m in Sources */,
+				1BDD56E81B92F03600DA6FDA /* HAItemManager.m in Sources */,
+				1BDD56EC1B92F03600DA6FDA /* HAScrollNavBar.m in Sources */,
+				1BDD56E91B92F03600DA6FDA /* HARootScrollView.m in Sources */,
 				1B03B67E1B5C08B300BA7B13 /* ViewController.m in Sources */,
 				1B03B67B1B5C08B300BA7B13 /* AppDelegate.m in Sources */,
-				1B03B6AD1B5C094700BA7B13 /* HAItemManager.m in Sources */,
-				1B03B6B11B5C094700BA7B13 /* UIColor+RGBA.m in Sources */,
-				1B3AB9BF1B61307900955EEC /* HARootScrollView.m in Sources */,
-				1B03B6AF1B5C094700BA7B13 /* HASortButton.m in Sources */,
-				1B03B6B01B5C094700BA7B13 /* HASortItemView.m in Sources */,
-				1B3AB9C01B61307900955EEC /* HARootScrollViewCell.m in Sources */,
+				1BDD56ED1B92F03600DA6FDA /* HASortButton.m in Sources */,
 				1B03B6781B5C08B300BA7B13 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,14 +332,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		1B03B67F1B5C08B300BA7B13 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				1B03B6801B5C08B300BA7B13 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		1B03B6841B5C08B300BA7B13 /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

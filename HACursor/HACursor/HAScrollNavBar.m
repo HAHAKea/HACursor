@@ -12,16 +12,15 @@
 #import "HAItemManager.h"
 
 
-#define ItemWidth 75
-#define FontMinSize 10
-#define FontDetLeSize 10
-#define FontDefSize 15
-#define StaticItemIndex 3
-#define scrollNavBarUpdate @"scrollNavBarUpdate"
-#define HAScrollItemIndex @"index"
+#define ItemWidth                 75
+#define FontMinSize               10
+#define FontDetLeSize             10
+#define FontDefSize               15
+#define StaticItemIndex           3
+#define scrollNavBarUpdate        @"scrollNavBarUpdate"
 #define rootScrollUpdateAfterSort @"updateAfterSort"
-#define moveToSelectedItem @"moveToSelectedItem"
-#define moveToTop @"moveToTop"
+#define moveToSelectedItem        @"moveToSelectedItem"
+#define moveToTop                 @"moveToTop"
 
 @interface HAScrollNavBar()<UIScrollViewDelegate>
 
@@ -32,63 +31,34 @@
 
 #warning --- 以字典来管理item
 @property (nonatomic, strong) NSMutableDictionary *itemsDic;
-@property (nonatomic, strong) NSMutableArray *tmpKeys;
+@property (nonatomic, strong) NSMutableArray      *tmpKeys;
 
-@property (nonatomic, assign) CGPoint beginPoint;
-@property (nonatomic, assign) CGFloat lastXpoint;
-@property (nonatomic, assign) CGFloat red1;
-@property (nonatomic, assign) CGFloat green1;
-@property (nonatomic, assign) CGFloat blue1;
-@property (nonatomic, assign) CGFloat alpha1;
-@property (nonatomic, assign) CGFloat red2;
-@property (nonatomic, assign) CGFloat green2;
-@property (nonatomic, assign) CGFloat blue2;
-@property (nonatomic, assign) CGFloat alpha2;
-@property (nonatomic, assign) NSInteger currctIndex;
-@property (nonatomic, assign) BOOL isSetUpItem;
-@property (nonatomic, assign) BOOL isLayoutitems;
-@property (nonatomic, assign) BOOL isHiddenAllItem;
+@property (nonatomic, assign) BOOL                isLayoutitems;
+@property (nonatomic, assign) BOOL                isHiddenAllItem;
+
+@property (nonatomic, assign) CGPoint             beginPoint;
+@property (nonatomic, assign) CGFloat             lastXpoint;
+@property (nonatomic, assign) CGFloat             red1;
+@property (nonatomic, assign) CGFloat             green1;
+@property (nonatomic, assign) CGFloat             blue1;
+@property (nonatomic, assign) CGFloat             alpha1;
+@property (nonatomic, assign) CGFloat             red2;
+@property (nonatomic, assign) CGFloat             green2;
+@property (nonatomic, assign) CGFloat             blue2;
+@property (nonatomic, assign) CGFloat             alpha2;
+@property (nonatomic, assign) NSInteger           currctIndex;
+
 @end
 
 @implementation HAScrollNavBar
-- (void)setItemKeys:(NSMutableArray *)itemKeys{
-    _itemKeys = itemKeys;
-    self.tmpKeys = itemKeys;
-    if (!self.isSetUpItem) {
-        [self setupItems];
-        self.isSetUpItem = YES;
-    }
-}
+
+#pragma mark - 懒加载
 
 - (NSMutableArray *)tmpKeys{
     if (!_tmpKeys) {
         _tmpKeys = [NSMutableArray array];
     }
     return _tmpKeys;
-}
-
-- (NSInteger)getIndexWithKey:(NSString *)key{
-    return [self.itemKeys indexOfObject:key];
-}
-
-- (UIButton *)getItemWithIndex:(NSInteger)index{
-    return [self.itemsDic objectForKey:self.tmpKeys[index]];
-}
-
-//创建按钮
-- (UIButton *)createItemWithTitle:(NSString *)title{
-    UIButton *button = [[UIButton alloc]init];
-    [button setTitle:title forState:UIControlStateNormal];
-    button.backgroundColor = [UIColor clearColor];
-    NSInteger fontSize = self.minFontSize > 0 ? self.minFontSize : FontMinSize;
-    button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
-    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
-    [self addSubview:button];
-    return button;
-}
-
-- (void)setPageViews:(NSMutableArray *)pageViews{
-    _pageViews = pageViews;
 }
 
 - (NSMutableDictionary *)itemsDic{
@@ -98,17 +68,30 @@
     return _itemsDic;
 }
 
-- (void)setupTmpPageViewDic{
-    for (int i = 0; i < self.tmpKeys.count; i++) {
-        [self.tmpPageViewDic setObject:self.pageViews[i] forKey:self.tmpKeys[i]];
-    }
-}
-
 - (NSMutableDictionary *)tmpPageViewDic{
     if (!_tmpPageViewDic) {
         _tmpPageViewDic = [NSMutableDictionary dictionary];
     }
     return _tmpPageViewDic;
+}
+
+#pragma mark - 属性配置
+- (void)setItemKeys:(NSMutableArray *)itemKeys{
+    _itemKeys = itemKeys;
+    self.tmpKeys = itemKeys;
+    if(self.itemsDic.count == 0){
+        [self setupItems];
+    }
+}
+
+- (void)setPageViews:(NSMutableArray *)pageViews{
+    _pageViews = pageViews;
+}
+
+- (void)setupTmpPageViewDic{
+    for (int i = 0; i < self.tmpKeys.count; i++) {
+        [self.tmpPageViewDic setObject:self.pageViews[i] forKey:self.tmpKeys[i]];
+    }
 }
 
 - (void)setOffsetX:(CGFloat)offsetX{
@@ -188,6 +171,7 @@
     }];
 }
 
+#pragma mark - 初始化
 - (instancetype)init
 {
     self = [super init];
@@ -203,10 +187,8 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(moveToTopAfterDelet:) name:moveToTop object:nil];
 }
 
-- (void)removeNotificationCenter{
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:scrollNavBarUpdate object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:moveToTop object:nil];
-    [[NSNotificationCenter defaultCenter] removeObserver:self name:moveToSelectedItem object:nil];
+- (void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)setup{
@@ -233,44 +215,6 @@
             _currectItem = button;
         }
     }
-}
-
-- (void)moveToTopAfterDelet:(NSNotification *)notificion{
-//    UIButton * button1 = [self getItemWithIndex:1];
-//    [self buttonClick:button1];
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        UIButton * button2 = [self getItemWithIndex:0];
-        [self buttonClick:button2];
-    });
-}
-
-- (void)moveToSelectedItemAfterDelet:(NSNotification *)notificion{
-    UIButton * button = [self.itemsDic objectForKey:notificion.object];
-    [self buttonClick:button];
-}
-
-- (void)updatePageView:(NSNotification *)notifition{
-    if (notifition.object) {
-        UIView *deletPageView = [self.tmpPageViewDic objectForKey:notifition.object];
-        deletPageView.hidden = YES;
-        [self.tmpPageViewDic removeObjectForKey:notifition.object];
-    }
-    int i = 0;
-    NSMutableArray *tmpArray = [NSMutableArray array];
-    self.rootScrollView.contentSize = CGSizeMake(self.tmpKeys.count * self.rootScrollView.width, 0);
-    for (NSString *key in self.tmpKeys) {
-        NSLog(@"key ---> %@  count ---> %ld",key,self.tmpKeys.count);
-        UIView *pageView = [self.tmpPageViewDic objectForKey:key];
-        [tmpArray addObject:pageView];
-        i++;
-    }
-    self.rootScrollView.pageViews = tmpArray;
-    [self.rootScrollView reloadPageViews];
-}
-
-- (void)updateTitles:(NSNotification *)notifition{
-    [self updatePageView:notifition];
-    [self layoutButtons];
 }
 
 //对item进行布局处理
@@ -308,16 +252,71 @@
     }
 }
 
-- (void)addOffset{
-    [self.rootScrollView setContentOffset:CGPointMake(1, 0)];
-    [self.rootScrollView setContentOffset:CGPointMake(0, 0)];
-}
-
 - (void)layoutSubviews{
     [super layoutSubviews];
     [self layoutButtons];
 }
 
+#pragma mark - 业务逻辑
+- (NSInteger)getIndexWithKey:(NSString *)key{
+    return [self.itemKeys indexOfObject:key];
+}
+
+- (UIButton *)getItemWithIndex:(NSInteger)index{
+    return [self.itemsDic objectForKey:self.tmpKeys[index]];
+}
+
+- (UIButton *)createItemWithTitle:(NSString *)title{
+    UIButton *button = [[UIButton alloc]init];
+    [button setTitle:title forState:UIControlStateNormal];
+    button.backgroundColor = [UIColor clearColor];
+    NSInteger fontSize = self.minFontSize > 0 ? self.minFontSize : FontMinSize;
+    button.titleLabel.font = [UIFont systemFontOfSize:fontSize];
+    [button addTarget:self action:@selector(buttonClick:) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:button];
+    return button;
+}
+
+- (void)moveToTopAfterDelet:(NSNotification *)notificion{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.03 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        UIButton * button2 = [self getItemWithIndex:0];
+        [self buttonClick:button2];
+    });
+}
+
+- (void)moveToSelectedItemAfterDelet:(NSNotification *)notificion{
+    UIButton * button = [self.itemsDic objectForKey:notificion.object];
+    [self buttonClick:button];
+}
+
+- (void)updatePageView:(NSNotification *)notifition{
+    if (notifition.object) {
+        UIView *deletPageView = [self.tmpPageViewDic objectForKey:notifition.object];
+        deletPageView.hidden = YES;
+        [self.tmpPageViewDic removeObjectForKey:notifition.object];
+    }
+    int i = 0;
+    NSMutableArray *tmpArray = [NSMutableArray array];
+    self.rootScrollView.contentSize = CGSizeMake(self.tmpKeys.count * self.rootScrollView.width, 0);
+    for (NSString *key in self.tmpKeys) {
+        NSLog(@"key ---> %@  count ---> %ld",key,self.tmpKeys.count);
+        UIView *pageView = [self.tmpPageViewDic objectForKey:key];
+        [tmpArray addObject:pageView];
+        i++;
+    }
+    self.rootScrollView.pageViews = tmpArray;
+    [self.rootScrollView reloadPageViews];
+}
+
+- (void)updateTitles:(NSNotification *)notifition{
+    [self updatePageView:notifition];
+    [self layoutButtons];
+}
+
+- (void)addOffset{
+    [self.rootScrollView setContentOffset:CGPointMake(1, 0)];
+    [self.rootScrollView setContentOffset:CGPointMake(0, 0)];
+}
 
 - (void)clickButtonWhenNotGraduallyChangFont:(UIButton *)button{
     _oldItem = _currectItem;
@@ -380,8 +379,6 @@
         button.selected = YES;
         _currectItem = button;
     }
-    
-    
     [self buttonMoveAnimationWithIndex:index];
 }
 
@@ -402,31 +399,25 @@
     }
 }
 
-- (void)changeButtonFontWithOffset:(CGFloat)offset andWidth:(CGFloat)width{
-    
-    if (self.minFontSize) {
-        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
-        self.secButton.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
-    }else{
-        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
-        self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+#pragma mark  渐变 动画相关
+- (void)setItemFontColorWithFrontItem:(UIButton *)frontItem AndBackItem:(UIButton *)backItem andPrecent:(CGFloat)p{
+    if (self.isGraduallyChangColor) {
+        CGFloat redTemp1 = ((self.red2 - self.red1) * (1-p)) + self.red1;
+        CGFloat greenTemp1 = ((self.green2 - self.green1) * (1 - p)) + self.green1;
+        CGFloat blueTemp1 = ((self.blue2 - self.blue1) * (1 - p)) + self.blue1;
+        
+        CGFloat redTemp2 = ((self.red2 - self.red1) * p) + self.red1;
+        CGFloat greenTemp2 = ((self.green2 - self.green1) * p) + self.green1;
+        CGFloat blueTemp2 = ((self.blue2 - self.blue1) * p) + self.blue1;
+        
+        [frontItem setTitleColor:[UIColor colorWithRed:redTemp1 green:greenTemp1 blue:blueTemp1 alpha:1] forState:UIControlStateNormal];
+        [backItem setTitleColor:[UIColor colorWithRed:redTemp2 green:greenTemp2 blue:blueTemp2 alpha:1] forState:UIControlStateNormal];
     }
-   
-    
-    [self.firstButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
-    [self.secButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
-    
-    CGFloat p = fmod(offset, width) /width;
-    NSInteger index = offset / width;
-    self.currctIndex = index;
-    if (self.isGraduallyChangFont) {
-        self.firstButton = [self.itemsDic objectForKey:self.tmpKeys[index]];
-        if(index + 1 < self.tmpKeys.count){
-            self.secButton = [self.itemsDic objectForKey:self.tmpKeys[index + 1]];
-        }else{
-            self.secButton = nil;
-        }
+}
 
+- (void)setItemFontSizeWithFrontItem:(UIButton *)frontItem AndBackItem:(UIButton *)backItem andPrecent:(CGFloat)p{
+    
+    if (self.isGraduallyChangFont) {
         CGFloat fontSize1;
         CGFloat fontSize2;
         if (self.maxFontSize) {
@@ -447,43 +438,44 @@
                 fontSize2 = p * FontDetLeSize + FontMinSize;
             }
         }
-        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:fontSize1];
-        self.secButton.titleLabel.font = [UIFont systemFontOfSize:fontSize2];
+        frontItem.titleLabel.font = [UIFont systemFontOfSize:fontSize1];
+        backItem.titleLabel.font = [UIFont systemFontOfSize:fontSize2];
+    }
+}
+
+- (void)setupNormalFontSizeItem{
+    if (self.minFontSize) {
+        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
+        self.secButton.titleLabel.font = [UIFont systemFontOfSize:self.minFontSize];
+    }else{
+        self.firstButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
+        self.secButton.titleLabel.font = [UIFont systemFontOfSize:FontDefSize];
     }
     
-    if (self.isGraduallyChangColor) {
-        CGFloat redTemp1 = ((self.red2 - self.red1) * (1-p)) + self.red1;
-        CGFloat greenTemp1 = ((self.green2 - self.green1) * (1 - p)) + self.green1;
-        CGFloat blueTemp1 = ((self.blue2 - self.blue1) * (1 - p)) + self.blue1;
-        
-        CGFloat redTemp2 = ((self.red2 - self.red1) * p) + self.red1;
-        CGFloat greenTemp2 = ((self.green2 - self.green1) * p) + self.green1;
-        CGFloat blueTemp2 = ((self.blue2 - self.blue1) * p) + self.blue1;
-        
-        [self.firstButton setTitleColor:[UIColor colorWithRed:redTemp1 green:greenTemp1 blue:blueTemp1 alpha:1] forState:UIControlStateNormal];
-        [self.secButton setTitleColor:[UIColor colorWithRed:redTemp2 green:greenTemp2 blue:blueTemp2 alpha:1] forState:UIControlStateNormal];
-        //self.pagingEnabled = NO;
-    }
+    [self.firstButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
+    [self.secButton setTitleColor:self.titleNormalColor forState:UIControlStateNormal];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
-    [self changeButtonFontWithOffset:scrollView.contentOffset.x andWidth:self.rootScrollView.width];
-}
+- (void)changeButtonFontWithOffset:(CGFloat)offset andWidth:(CGFloat)width{
+    
+    [self setupNormalFontSizeItem];
+    
+    CGFloat p = fmod(offset, width) /width;
+    NSInteger index = offset / width;
+    self.currctIndex = index;
 
-- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
-    NSInteger num = targetContentOffset->x / _rootScrollView.frame.size.width;
-    [self setSelectItemWithIndex:num];
-    NSLog(@"num ---> %ld",num);
-//    [[NSNotificationCenter defaultCenter] postNotificationName:HAScrollItemIndex object:[NSNumber numberWithInteger:num]];
+    self.firstButton = [self.itemsDic objectForKey:self.tmpKeys[index]];
+    self.secButton   = (index + 1 < self.tmpKeys.count) ? [self.itemsDic objectForKey:self.tmpKeys[index + 1]] : nil;
+    
+    [self setItemFontSizeWithFrontItem:self.firstButton AndBackItem:self.secButton andPrecent:p];
+    [self setItemFontColorWithFrontItem:self.firstButton AndBackItem:self.secButton andPrecent:p];
 }
 
 - (void)hiddenAllItems{
-    static dispatch_once_t onceToken;
     if (!self.isHiddenAllItem) {
         [self setupTmpPageViewDic];
         self.isHiddenAllItem = YES;
     }
-    
     for (int i = 0; i < self.tmpKeys.count; i++) {
         UIButton *button = [self getItemWithIndex:i];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.05 * i * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -505,7 +497,13 @@
     }
 }
 
-- (void)dealloc{
-    [self removeNotificationCenter];
+#pragma mark - scrollView代理方法
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self changeButtonFontWithOffset:scrollView.contentOffset.x andWidth:self.rootScrollView.width];
+}
+
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset {
+    NSInteger num = targetContentOffset->x / _rootScrollView.frame.size.width;
+    [self setSelectItemWithIndex:num];
 }
 @end
