@@ -52,11 +52,19 @@
 - (NSMutableArray *)createPageViews{
     NSMutableArray *pageViews = [NSMutableArray array];
     for (NSInteger i = 0; i < self.titles.count; i++) {
-        UITableView *textView = [[UITableView alloc]init];
-        textView.delegate = self;
-        textView.dataSource = self;
-        textView.tag = i;
-        [pageViews addObject:textView];
+        if(i % 3 == 0){
+            UITableView *textView = [[UITableView alloc]init];
+            textView.delegate = self;
+            textView.dataSource = self;
+            textView.tag = i;
+            [pageViews addObject:textView];
+        }else{
+            HATestView *textView = [[HATestView alloc]init];
+            //textView.tag = i;
+            textView.label.text = self.titles[i];
+            [pageViews addObject:textView];
+        }
+       
     }
     return pageViews;
 }
