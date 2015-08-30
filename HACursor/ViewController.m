@@ -11,7 +11,7 @@
 #import "UIView+Extension.h"
 #import "HATestView.h"
 
-@interface ViewController ()
+@interface ViewController ()<UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, strong) NSArray *titles;
 @property (nonatomic, strong) NSMutableArray *pageViews;
 @end
@@ -52,10 +52,26 @@
 - (NSMutableArray *)createPageViews{
     NSMutableArray *pageViews = [NSMutableArray array];
     for (NSInteger i = 0; i < self.titles.count; i++) {
-        HATestView *textView = [[HATestView alloc]init];
-        textView.label.text = self.titles[i];
+        UITableView *textView = [[UITableView alloc]init];
+        textView.delegate = self;
+        textView.dataSource = self;
+        textView.tag = i;
         [pageViews addObject:textView];
     }
     return pageViews;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 30;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    static NSString *ID = @"cell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:ID];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
+    }
+    cell.textLabel.text = [NSString stringWithFormat:@"Cell - %@",self.titles[tableView.tag]];
+    return cell;
 }
 @end
