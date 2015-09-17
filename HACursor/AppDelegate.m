@@ -24,20 +24,7 @@
     vc1.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:1];
     UINavigationController *nav1 = [[UINavigationController alloc] initWithRootViewController:vc1];
     
-    ViewController *vc2 = [[ViewController alloc] init];
-    vc2.title = @"测试程序2";
-    vc2.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:2];
-    UINavigationController *nav2 = [[UINavigationController alloc] initWithRootViewController:vc2];
-    
-    ViewController *vc3 = [[ViewController alloc] init];
-    vc3.title = @"测试程序3";
-    vc3.tabBarItem = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemFavorites tag:3];
-    UINavigationController *nav3 = [[UINavigationController alloc] initWithRootViewController:vc3];
-    
-    UITabBarController *tabVc = [[UITabBarController alloc] init];
-    [tabVc setViewControllers:@[nav1,nav2,nav3]];
-    
-    self.window.rootViewController = tabVc;
+    self.window.rootViewController = vc1;
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;

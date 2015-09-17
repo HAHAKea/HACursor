@@ -244,6 +244,7 @@
 				TargetAttributes = {
 					1B03B6711B5C08B300BA7B13 = {
 						CreatedOnToolsVersion = 6.3;
+						DevelopmentTeam = JQ7P6CZ2UM;
 					};
 					1B03B68A1B5C08B300BA7B13 = {
 						CreatedOnToolsVersion = 6.3;
@@ -427,8 +428,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HACursor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = haha.HACursorm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -437,8 +441,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = HACursor/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = haha.HACursorm;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

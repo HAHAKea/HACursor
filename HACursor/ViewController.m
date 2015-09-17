@@ -32,7 +32,7 @@
     cursor.titles = self.titles;
     cursor.pageViews = [self createPageViews];
     //设置根滚动视图的高度
-    cursor.rootScrollViewHeight = self.view.frame.size.height -152;
+    cursor.rootScrollViewHeight = self.view.frame.size.height -109;
     //默认值是白色
     cursor.titleNormalColor = [UIColor whiteColor];
     //默认值是白色
