@@ -386,11 +386,11 @@
     UIButton *selectButton = [self.itemsDic objectForKey:self.tmpKeys[index]];
     if (self.tmpKeys.count * self.itemW > self.width) {
         if (index < StaticItemIndex) {
-            //x < 2 :前两个
+            //x < 3 :前两个
             [self setContentOffset:CGPointMake(0, 0) animated:YES];
         }else if(index > self.tmpKeys.count - StaticItemIndex - 1) {
             // x >= 8 - 3 - 1;
-            [self setContentOffset:CGPointMake(self.contentSize.width - self.width, 0) animated:YES];
+            [self setContentOffset:CGPointMake(self.tmpKeys.count * self.itemW - self.width, 0) animated:YES];
         }else{
             [self setContentOffset:CGPointMake(selectButton.center.x - self.center.x, 0) animated:YES];
         }
